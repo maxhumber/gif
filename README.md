@@ -1,8 +1,14 @@
-### gif
+<h3 align="center">
+  <img src="https://raw.githubusercontent.com/maxhumber/gif/master/logo/gif.png" width="300px" alt="gif">
+</h3>
+<p align="center">
+  <a href="https://github.com/maxhumber/gif/blob/master/setup.py"><img alt="Dependencies" src="https://img.shields.io/badge/dependencies-zero-brightgreen"></a>
+  <a href="https://travis-ci.org/maxhumber/gif"><img alt="Travis" src="https://img.shields.io/travis/maxhumber/gif.svg"></a>
+  <a href="https://pypi.python.org/pypi/gif"><img alt="PyPI" src="https://img.shields.io/pypi/v/gif.svg"></a>
+  <a href="https://pepy.tech/project/gif"><img alt="Downloads" src="https://pepy.tech/badge/gif"></a>
+</p>
 
-
-
-##### Installation
+#### Installation
 
 ```
 pip install gif
@@ -10,7 +16,7 @@ pip install gif
 
 
 
-##### Usage
+#### Usage
 
 ```
 import random
