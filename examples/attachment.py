@@ -8,6 +8,7 @@ import gif
 from matplotlib import pyplot as plt
 from PIL import Image
 
+
 @gif.frame
 def plot_arrival(count, count_last, xlim=(0, 10), ylim=(0, 100), figsize=(10, 5)):
     plt.figure(figsize=figsize)
@@ -17,6 +18,7 @@ def plot_arrival(count, count_last, xlim=(0, 10), ylim=(0, 100), figsize=(10, 5)
     plt.xticks(range(xlim[0], xlim[1] + 1))
     plt.ylim(ylim)
 
+
 def simulate_arrival(count, p=0.1):
     if random.uniform(0, 1) <= p:
         group = len(count)
@@ -25,6 +27,7 @@ def simulate_arrival(count, p=0.1):
         v = list(count.values())
         group = random.choices(k, weights=v)[0]
     return group
+
 
 random.seed(2020)
 count = Counter({0})

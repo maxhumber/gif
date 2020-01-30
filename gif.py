@@ -19,6 +19,7 @@ def frame(func):
         plt.ylim((0, 100))
     ```
     """
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         buffer = io.BytesIO()
@@ -28,6 +29,7 @@ def frame(func):
         image = Image.open(buffer)
         plt.close()
         return image
+
     return wrapper
 
 

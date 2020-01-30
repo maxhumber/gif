@@ -62,4 +62,3 @@ Select the duration (milliseconds) between each frame and save:
 ```
 gif.save(frames, 'random.gif', duration=100)
 ```
-
