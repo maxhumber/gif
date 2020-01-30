@@ -68,6 +68,7 @@ gif.save(frames, 'random.gif', duration=100)
 #### Examples
 
 Random ([code](https://github.com/maxhumber/gif/blob/master/examples/random.py)):
+<<<<<<< HEAD
 ![](https://raw.githubusercontent.com/maxhumber/gif/master/examples/random.gif){width=200px}
 
 Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment)):
@@ -75,3 +76,15 @@ Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/exa
 
 Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/sin.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/)):
 ![](https://raw.githubusercontent.com/maxhumber/gif/master/examples/sin.gif){width=300px}
+=======
+<br/>
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/random.gif" width="250px" alt="gif" align='left'>
+<br/>
+Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment)):
+<br/>
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" width="500px" alt="gif" align='left'>
+<br/>
+Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/sin.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/)):
+<br/>
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/sin.gif" width="400px" alt="gif" align='left'>
+>>>>>>> 13d8a6f940aa016daff02a282b1693f220bff186
