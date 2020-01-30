@@ -8,13 +8,15 @@ import gif
 
 random.seed(2020)
 
+
 @gif.frame
 def plot(count, xlim=(0, 10), ylim=(0, 100), figsize=(10, 5)):
     plt.figure(figsize=figsize)
     plt.bar(count.keys(), count.values())
-    plt.xlim([xlim[0]-1, xlim[1]+1])
-    plt.xticks(range(xlim[0], xlim[1]+1))
+    plt.xlim([xlim[0] - 1, xlim[1] + 1])
+    plt.xticks(range(xlim[0], xlim[1] + 1))
     plt.ylim(ylim)
+
 
 def simulate(count, p=0.1):
     if random.uniform(0, 1) <= p:
@@ -25,6 +27,7 @@ def simulate(count, p=0.1):
         group = random.choices(k, weights=v)[0]
     return group
 
+
 frames = []
 count = Counter({0})
 for _ in range(100):
@@ -33,4 +36,4 @@ for _ in range(100):
     frame = plot(count)
     frames.append(frame)
 
-gif.save(frames, 'test3.gif')
+gif.save(frames, "test3.gif")

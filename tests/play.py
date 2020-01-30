@@ -3,12 +3,14 @@ from matplotlib import pyplot as plt
 
 import gif
 
+
 @gif.frame
 def plot(x, y):
     plt.figure(figsize=(5, 5))
     plt.scatter(x, y)
     plt.xlim((0, 100))
     plt.ylim((0, 100))
+
 
 frames = []
 for _ in range(50):
@@ -18,4 +20,4 @@ for _ in range(50):
     frame = plot(x, y)
     frames.append(frame)
 
-gif.save(frames, 'test4.gif')
+gif.save(frames, "test4.gif")
