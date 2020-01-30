@@ -74,3 +74,7 @@ gif.save(frames, 'random.gif', duration=100)
 - Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment))
 
 <img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" width="500px" alt="gif" align='left'>
+
+- Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/sin.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/))
+
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/sin.gif" width="400px" alt="gif" align='left'>
