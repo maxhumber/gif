@@ -68,10 +68,10 @@ gif.save(frames, 'random.gif', duration=100)
 #### Examples
 
 Random ([code](https://github.com/maxhumber/gif/blob/master/examples/random.py)):
-![](https://raw.githubusercontent.com/maxhumber/gif/master/examples/random.gif){width=200px}
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/random.gif" style="zoom:67%;" />
 
 Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment)):
-![](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif){width=500px}
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" style="zoom:50%;" />
 
 Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/sin.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/)):
-![](https://raw.githubusercontent.com/maxhumber/gif/master/examples/sin.gif){width=300px}
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/sin.gif" style="zoom:67%;" />
