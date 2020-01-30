@@ -11,9 +11,9 @@ setup(
     long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
-        'Topic :: Multimedia :: Graphics'
+        "Topic :: Multimedia :: Graphics",
     ],
-    keywords=['gif', 'gifs', 'animated', 'animation', 'matplotlib', 'PIL', 'Pillow']
+    keywords=["gif", "gifs", "animated", "animation", "matplotlib", "PIL", "Pillow"],
     url="https://github.com/maxhumber/gif",
     author="Max Humber",
     author_email="max.humber@gmail.com",
@@ -21,5 +21,5 @@ setup(
     py_modules=["gif"],
     install_requires=["matplotlib", "Pillow"],
     python_requires=">=3.6",
-    setup_requires=["setuptools>=38.6.0"]
+    setup_requires=["setuptools>=38.6.0"],
 )
