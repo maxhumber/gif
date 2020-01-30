@@ -12,7 +12,7 @@
 
 #### About
 
-`gif` is a better way to build animated gifs in Matplotlib.
+`gif` is a better way to build animated Matplotlib gifs.
 
 
 
@@ -62,3 +62,15 @@ Select the duration (milliseconds) between each frame and save:
 ```
 gif.save(frames, 'random.gif', duration=100)
 ```
+
+
+
+#### Examples
+
+- Random ([code](https://github.com/maxhumber/gif/blob/master/examples/random.py))
+
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/random.gif" width="250px" alt="gif" align='left'>
+
+- Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment))
+
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" width="500px" alt="gif" align='left'>
