@@ -7,7 +7,7 @@ from PIL import Image
 
 def frame(func):
     """
-    Matplotlib plotting function decorator.
+    Decorator for a matplotlib plot function.
 
     Example:
     ```
@@ -28,13 +28,12 @@ def frame(func):
         image = Image.open(buffer)
         plt.close()
         return image
-
     return wrapper
 
 
 def save(frames, path, duration=100):
     """
-    Save frames to animated gif file format
+    Save decorated frames to an animated gif.
 
     - frames (list): collection of frames built with the frame decorator
     - path (str): filename with relative or absolute path

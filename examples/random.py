@@ -1,7 +1,6 @@
-import random
-from matplotlib import pyplot as plt
-
 import gif
+from matplotlib import pyplot as plt
+from random import randint
 
 @gif.frame
 def plot(x, y):
@@ -10,21 +9,11 @@ def plot(x, y):
     plt.xlim((0, 100))
     plt.ylim((0, 100))
 
-
 frames = []
 for _ in range(50):
-    n = 10
-    x = [random.randint(0, 100) for _ in range(10)]
-    y = [random.randint(0, 100) for _ in range(10)]
+    x = [randint(0, 100) for _ in range(10)]
+    y = [randint(0, 100) for _ in range(10)]
     frame = plot(x, y)
     frames.append(frame)
 
-gif.save(frames, "test.gif", loop=1)
-
-
-from IPython.display import Image;
-Image("test.gif")
-
-
-
-#
+gif.save(frames, "examples/random.gif")
