@@ -20,6 +20,9 @@ setup(
     license="MIT",
     py_modules=["gif"],
     install_requires=["matplotlib", "Pillow"],
+    extras_require = {
+        'display': ["IPython"]
+    },
     python_requires=">=3.6",
     setup_requires=["setuptools>=38.6.0"],
 )

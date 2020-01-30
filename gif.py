@@ -7,8 +7,18 @@ from PIL import Image
 
 def frame(func):
     """
-    """
+    Matplotlib plotting function decorator.
 
+    Example:
+    ```
+    @gif.frame
+    def plot(x, y):
+        plt.figure(figsize=(5, 5))
+        plt.scatter(x, y)
+        plt.xlim((0, 100))
+        plt.ylim((0, 100))
+    ```
+    """
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         buffer = io.BytesIO()
@@ -22,14 +32,19 @@ def frame(func):
     return wrapper
 
 
-def save(frames, filename, duration=100, loop=0):
+def save(frames, path, duration=100):
     """
+    Save frames to animated gif file format
+
+    - frames (list): collection of frames built with the frame decorator
+    - path (str): filename with relative or absolute path
+    - duration (int): milliseconds between frames
     """
     frames[0].save(
-        filename,
+        path,
         save_all=True,
         append_images=frames[1:],
         optimize=True,
         duration=duration,
-        loop=loop,
+        loop=0,
     )

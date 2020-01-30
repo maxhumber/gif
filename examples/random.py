@@ -3,7 +3,6 @@ from matplotlib import pyplot as plt
 
 import gif
 
-
 @gif.frame
 def plot(x, y):
     plt.figure(figsize=(5, 5))
@@ -20,4 +19,12 @@ for _ in range(50):
     frame = plot(x, y)
     frames.append(frame)
 
-gif.save(frames, "test4.gif")
+gif.save(frames, "test.gif", loop=1)
+
+
+from IPython.display import Image;
+Image("test.gif")
+
+
+
+#
