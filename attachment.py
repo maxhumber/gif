@@ -71,83 +71,17 @@ The music lab study
 
 '''
 
-import pandas as pd
-import numpy as np
-from matplotlib import pyplot as plt
-
-%matplotlib inline
-
-pop = 38_000
-
-heights = np.random.power(2, size=pop)
-
-df = pd.DataFrame(heights, columns=['height'])
-df['height'] = df.height * 100 // 10 / 10
-df['height'].value_counts()
-
-pd.DataFrame(heights).plot(kind='density')
-
-plt.hist(heights, density=True)
-
-from scipy.stats import powerlaw
-
-pd.DataFrame(
-    powerlaw(a=2).rvs(100000)
-).plot(kind='density')
-
-[powerlaw(a=2, scale=5.66).pdf(x) for x in range(100)]
-
-
-
-from random import random
-
-def pl(x_min=5, alpha=2.5):
-    r = random()
-    x = x_min * (1 - r) ** (-1 / (alpha - 1))
-    return x
-
-pd.DataFrame(
-    [pl() for _ in range(1000)]
-).plot(kind='density')
-
 ####
 
 from collections import Counter
+import io
 import random
 import time
+
 from matplotlib import pyplot as plt
+from PIL import Image
 
 random.seed(2020)
-
-def plot_bar(k, v, k_last, v_last):
-    plt.bar(k, v)
-    plt.bar(k_last, v_last)
-    plt.xlim([-1, 11])
-    plt.xticks(range(10+1))
-    plt.ylim([0, 100])
-    plt.show()
-
-i = 0
-p = 0.10
-count = Counter({i})
-k_last = []
-v_last = []
-for _ in range(100):
-    if random.uniform(0, 1) <= p:
-        group = i
-        i += 1
-    else:
-        k = list(count.keys())
-        v = list(count.values())
-        group = random.choices(k, weights=v)[0]
-    count.update({group})
-    plt.figure(figsize=(10, 5))
-    plt.title(f'Newest arrival joined group: {group}')
-    plot_bar(k, v, k_last, v_last)
-    k_last, v_last = k, v
-    time.sleep(1/5)
-
-####
 
 def simulate_arrival(count, p=0.1):
     if random.uniform(0, 1) <= p:
@@ -158,25 +92,34 @@ def simulate_arrival(count, p=0.1):
         group = random.choices(k, weights=v)[0]
     return group
 
-def plot_arrival(count, count_last, xlim=[0, 10], ylim=[0, 100]):
+def plot_arrival(count, count_last,
+        xlim=[0, 10], ylim=[0, 100], figsize=(10, 5)):
+    plt.figure(figsize=figsize)
     plt.bar(count.keys(), count.values())
     plt.bar(count_last.keys(), count_last.values())
     plt.xlim([xlim[0]-1, xlim[1]+1])
     plt.xticks(range(xlim[0], xlim[1]+1))
     plt.ylim(ylim)
-    plt.show()
 
+images = []
 count = Counter({0})
 count_last = count.copy()
 for _ in range(100):
     group = simulate_arrival(count, p=0.10)
     count.update({group})
-    plt.figure(figsize=(10, 5))
+    buf = io.BytesIO()
     plt.title(f'Newest arrival joined group: {group}')
     plot_arrival(count, count_last)
+    plt.savefig(buf, format='png')
+    im = Image.open(buf)
+    images.append(im)
     count_last = count.copy()
-    time.sleep(1/5)
 
-simulate_arrival(count)
-
-##
+images[0].save(
+    'attachment.gif',
+    save_all=True,
+    append_images=images[1:],
+    optimize=True,
+    duration=100,
+    loop=0
+)
