@@ -1,23 +1,24 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
     name="gif",
-    version="0.1",
-    description="work in progress",
+    version="1.0",
+    description="🎡 Better animated gifs",
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
+        'Topic :: Multimedia :: Graphics'
     ],
+    keywords=['gif', 'gifs', 'animated', 'animation', 'matplotlib', 'PIL', 'Pillow']
     url="https://github.com/maxhumber/gif",
     author="Max Humber",
     author_email="max.humber@gmail.com",
     license="MIT",
     py_modules=["gif"],
-    # packages=find_packages(),
     install_requires=["matplotlib", "Pillow"],
     python_requires=">=3.6",
     setup_requires=["setuptools>=38.6.0"],

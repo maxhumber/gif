@@ -4,6 +4,8 @@ import io
 from matplotlib import pyplot as plt
 from PIL import Image
 
+## support altair?
+
 def frame(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -15,6 +17,8 @@ def frame(func):
         plt.close() # to clear the interactive plot
         return image
     return wrapper
+
+# clean up this
 
 def save(frames, filename, duration=100, loop=0):
     frames[0].save(
