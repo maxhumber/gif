@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 def plot(i):
     x = np.linspace(0, 2, 1000)
     y = np.sin(2 * np.pi * (x - 0.01 * i))
-    plt.plot(x, y)
+    plt.figure(figsize=(5, 3), dpi=100)
+    plt.plot(x, y, color='red')
 
 frames = []
 for i in range(100):
