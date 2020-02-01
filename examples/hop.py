@@ -16,6 +16,8 @@ def plot_hop(i, margin=0.1):
     plt.hlines(y=blue[i], xmin=1+margin, xmax=2, colors='b', lw=2)
     plt.xlim(0-margin*2, 2+margin*2)
     plt.ylim(0, 100)
+    plt.xticks([0.5, 1.5], ['Red Team', 'Blue Team'])
+    plt.yticks([0, 25, 50, 75, 100], ['0', '25', '50', '75', '100%'])
 
 frames = []
 for i in range(n):
