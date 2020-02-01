@@ -79,4 +79,9 @@ gif.save(frames, 'random.gif', duration=100)
 <br/>
 <img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif" />
 <br/>
+<p>Hypothetical Outcome Plot (<a href="https://github.com/maxhumber/gif/blob/master/examples/hop.py">code</a>, <a href="https://www.r-bloggers.com/hypothetical-outcome-plots/">original</a>):</p>
+<br/>
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif" />
+<br/>
 </div>
+
