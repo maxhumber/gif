@@ -83,6 +83,15 @@ Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/wave.py), [or
 Hypothetical Outcome Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/hop.py), [original](https://www.r-bloggers.com/hypothetical-outcome-plots/)):
 ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif)
 
+Polar Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/canada.py), [data](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2410000301#timeframe), [inspiration](https://www.dataquest.io/blog/climate-temperature-spirals-python/)):
+
+![canada.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/canada.gif)
+
+3D ([code](https://github.com/maxhumber/gif/blob/master/examples/3D.py), [inspiration](https://stackoverflow.com/questions/48563526/drawing-a-logarithmic-spiral-in-three-axes-in-python)):
+
+![3D.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/3D.gif)
 
 
-# https://stackoverflow.com/questions/48563526/drawing-a-logarithmic-spiral-in-three-axes-in-python
+
+
+
