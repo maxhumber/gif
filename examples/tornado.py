@@ -27,4 +27,4 @@ for i in range(N):
     frame = plot_spiral(i)
     frames.append(frame)
 
-gif.save(frames, "examples/3D.gif", duration=50)
+gif.save(frames, "examples/tornado.gif", duration=50)
