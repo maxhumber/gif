@@ -38,7 +38,7 @@ Decorate a Matplotlib plot function with `gif.frame`:
 ```
 @gif.frame
 def plot(x, y):
-    plt.figure(figsize=(5, 5))
+    plt.figure(figsize=(5, 3), dpi=100)
     plt.scatter(x, y)
     plt.xlim((0, 100))
     plt.ylim((0, 100))
@@ -60,28 +60,29 @@ for _ in range(50):
 Select the duration (milliseconds) between each frame and save:
 
 ```
-gif.save(frames, 'random.gif', duration=100)
+gif.save(frames, "examples/chaos.gif", duration=100)
 ```
+
+
+
+---
 
 
 
 #### Examples
 
-<div>
-<p>Chaos (<a href="https://github.com/maxhumber/gif/blob/master/examples/chaos.py">code</a>):
-<br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif" />
-<br/>
-<p>Preferential Attachment (<a href="https://github.com/maxhumber/gif/blob/master/examples/attachment.py">code</a>, <a href="https://en.wikipedia.org/wiki/Preferential_attachment">theory</a>):</p>
-<br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" />
-<p>Wave (<a href="https://github.com/maxhumber/gif/blob/master/examples/wave.py">code</a>, <a href="http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/">original</a>):</p>
-<br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif" />
-<br/>
-<p>Hypothetical Outcome Plot (<a href="https://github.com/maxhumber/gif/blob/master/examples/hop.py">code</a>, <a href="https://www.r-bloggers.com/hypothetical-outcome-plots/">original</a>):</p>
-<br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif" />
-<br/>
-</div>
+Chaos ([code](https://github.com/maxhumber/gif/blob/master/examples/chaos.py)):
+![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif)
 
+Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment)):
+![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif)
+
+Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/wave.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs):
+![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif)
+
+Hypothetical Outcome Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/hop.py), [original](https://www.r-bloggers.com/hypothetical-outcome-plots/)):
+![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif)
+
+
+
+# https://stackoverflow.com/questions/48563526/drawing-a-logarithmic-spiral-in-three-axes-in-python

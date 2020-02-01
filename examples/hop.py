@@ -1,13 +1,10 @@
 import gif
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 
-np.random.seed(2016)
-
-n = 50
-red = np.random.normal(loc=45, scale=3, size=n)
-blue = np.random.normal(loc=48, scale=5, size=n)
+N = 50
+red = np.random.normal(loc=45, scale=3, size=N)
+blue = np.random.normal(loc=48, scale=5, size=N)
 
 @gif.frame
 def plot_hop(i, margin=0.1):
@@ -20,7 +17,7 @@ def plot_hop(i, margin=0.1):
     plt.yticks([0, 25, 50, 75, 100], ['0', '25', '50', '75', '100%'])
 
 frames = []
-for i in range(n):
+for i in range(N):
     frame = plot_hop(i)
     frames.append(frame)
 
