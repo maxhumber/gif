@@ -64,27 +64,28 @@ gif.save(frames, "examples/chaos.gif", duration=100)
 ```
 
 
-
----
-
-
-
 #### Examples
 
 Chaos ([code](https://github.com/maxhumber/gif/blob/master/examples/chaos.py)):
+
 ![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif)
 
 Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment)):
+
 ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif)
 
 Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/wave.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs)):
+
 ![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif)
 
 Hypothetical Outcome Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/hop.py), [original](https://www.r-bloggers.com/hypothetical-outcome-plots/)):
+
 ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif)
 
 Polar Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/canada.py), [data](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2410000301#timeframe), [inspiration](https://www.dataquest.io/blog/climate-temperature-spirals-python/)):
+
 ![canada.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/canada.gif)
 
 Tornado ([code](https://github.com/maxhumber/gif/blob/master/examples/tornado.py), [inspiration](https://stackoverflow.com/questions/48563526/drawing-a-logarithmic-spiral-in-three-axes-in-python)):
+
 ![tornado.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/tornado.gif)
