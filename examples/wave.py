@@ -15,4 +15,4 @@ for i in range(100):
     frame = plot(i)
     frames.append(frame)
 
-gif.save(frames, "examples/sin.gif", duration=20)
+gif.save(frames, "examples/wave.gif", duration=20)

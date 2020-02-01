@@ -68,15 +68,15 @@ gif.save(frames, 'random.gif', duration=100)
 #### Examples
 
 <div>
-<p>Random (<a href="https://github.com/maxhumber/gif/blob/master/examples/random.py">code</a>):
+<p>Chaos (<a href="https://github.com/maxhumber/gif/blob/master/examples/chaos.py">code</a>):
 <br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/random.gif" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif" />
 <br/>
 <p>Preferential Attachment (<a href="https://github.com/maxhumber/gif/blob/master/examples/attachment.py">code</a>, <a href="https://en.wikipedia.org/wiki/Preferential_attachment">theory</a>):</p>
 <br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" style="zoom:50%;" />
-<p>Wave (<a href="https://github.com/maxhumber/gif/blob/master/examples/sin.py">code</a>, <a href="http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/">original</a>):</p>
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif" />
+<p>Wave (<a href="https://github.com/maxhumber/gif/blob/master/examples/wave.py">code</a>, <a href="http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs/">original</a>):</p>
 <br/>
-<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/sin.gif" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif" />
 <br/>
 </div>
