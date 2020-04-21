@@ -19,7 +19,7 @@ setup(
     author_email="max.humber@gmail.com",
     license="MIT",
     py_modules=["gif"],
-    install_requires=["matplotlib", "Pillow"],
+    install_requires=["matplotlib", "Pillow<7"],
     python_requires=">=3.6",
     setup_requires=["setuptools>=38.6.0"],
 )
