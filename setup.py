@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="gif",
-    version="1.0.2",
+    version="1.0.3",
     description="✨ Better animated Matplotlib gifs",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setup(
     author_email="max.humber@gmail.com",
     license="MIT",
     py_modules=["gif"],
-    install_requires=["matplotlib", "Pillow<7"],
+    install_requires=["matplotlib", "Pillow>=6.0.0,<=7.0.0"],
     python_requires=">=3.6",
     setup_requires=["setuptools>=38.6.0"],
 )
