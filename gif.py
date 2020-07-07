@@ -1,15 +1,27 @@
 import functools
+from importlib import import_module
 import io
 
 from matplotlib import pyplot as plt
 from PIL import Image
+
+try:
+    from altair_saver import save as save_alt
+
+    altair_saver_installed = True
+except ModuleNotFoundError:
+    altair_saver_installed = False
+
+
+class MissingExtension(Exception):
+    pass
 
 
 def frame(func):
     """
     Decorator for a matplotlib plot function.
 
-    Example:
+    matplotlib Example:
     ```
     @gif.frame
     def plot(x, y):
@@ -23,8 +35,13 @@ def frame(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         buffer = io.BytesIO()
-        func(*args, **kwargs)
-        plt.savefig(buffer, format="png")
+        plot = func(*args, **kwargs)
+        if "altair" in str(type(plot)):
+            if not altair_saver_installed:
+                raise MissingExtension("pip install gif[altair]")
+            save_alt(plot, buffer, fmt="png")
+        else:
+            plt.savefig(buffer, format="png")
         buffer.seek(0)
         image = Image.open(buffer)
         plt.close()

@@ -10,14 +10,16 @@ from PIL import Image
 
 random.seed(2020)
 
+
 @gif.frame
 def plot_arrival(count, count_last):
     plt.figure(figsize=(5, 3), dpi=100)
     plt.bar(count.keys(), count.values())
     plt.bar(count_last.keys(), count_last.values())
     plt.xlim(-1, 11)
-    plt.xticks(range(0, 10+1))
+    plt.xticks(range(0, 10 + 1))
     plt.ylim(0, 100)
+
 
 def simulate_arrival(count, p=0.10):
     if random.uniform(0, 1) <= p:
@@ -27,6 +29,7 @@ def simulate_arrival(count, p=0.10):
         v = list(count.values())
         group = random.choices(k, weights=v)[0]
     return group
+
 
 count = Counter({0})
 count_last = count.copy()
