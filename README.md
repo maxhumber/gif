@@ -9,13 +9,13 @@
 </p>
 
 
-#### About
+### About
 
 The extension for [matplotlib](https://matplotlib.org/) and [Altair](https://altair-viz.github.io/) animations.
 
 
 
-#### Installation
+### Installation
 
 gif is installed at the command line:
 
@@ -33,7 +33,7 @@ pip install gif[altair]
 
 
 
-#### Usage (matplotlib)
+### Usage (matplotlib)
 
 Imports and data:
 
@@ -75,7 +75,7 @@ gif.save(frames, 'example.gif', duration=100)
 
 
 
-#### Usage (Altair)
+### Usage (Altair)
 
 Imports and data:
 
@@ -122,7 +122,7 @@ gif.save(frames, 'example.gif', duration=100)
 
 
 
-#### Gallery (matplotlib)
+### Gallery (matplotlib)
 
 <I>Click on any image to see the source code</I>
 
@@ -132,13 +132,14 @@ gif.save(frames, 'example.gif', duration=100)
 
 
 
-#### Gallery (Altair)
+### Gallery (Altair)
 
 <I>Click on any image to see the source code</I>
 
 | [![covid.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/covid/covid.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/covid) | [![emoji.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/emoji/emoji.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/emoji) | [![pyramid.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/pyramid/pyramid.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/pyramid) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [![textbooks.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/textbooks/textbooks.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/textbooks) | [![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/wave/wave.gif)]( https://github.com/maxhumber/gif/tree/master/gallery/altair/wave) |                                                              |
+
 
 
 

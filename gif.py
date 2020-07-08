@@ -21,14 +21,27 @@ def frame(func):
     """
     Decorator for a matplotlib plot function.
 
-    matplotlib Example:
+    Usage (matplotlib):
     ```
     @gif.frame
-    def plot(x, y):
-        plt.figure(figsize=(5, 5))
-        plt.scatter(x, y)
+    def plot(i):
+        xi = x[i*10:(i+1)*10]
+        yi = y[i*10:(i+1)*10]
+        plt.scatter(xi, yi)
         plt.xlim((0, 100))
         plt.ylim((0, 100))
+    ```
+
+    Usage (Altair):
+    ```
+    @gif.frame
+    def plot(i):
+        d = df[df['t'] == i]
+        chart = alt.Chart(d).encode(
+            x=alt.X('x', scale=alt.Scale(domain=(0, 100))),
+            y=alt.Y('y', scale=alt.Scale(domain=(0, 100)))
+        ).mark_circle()
+        return chart
     ```
     """
 
@@ -57,6 +70,14 @@ def save(frames, path, duration=100):
     - frames (list): collection of frames built with the frame decorator
     - path (str): filename with relative or absolute path
     - duration (int): milliseconds between frames
+
+    Example:
+    ```
+    frames = []
+    for i in range(10):
+        frame = plot(i)
+        frames.append(frame)
+    ```
     """
     frames[0].save(
         path,

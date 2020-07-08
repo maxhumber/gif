@@ -9,8 +9,7 @@ deploy:
     tags: true
 
 install:
-  - "pip install -e ."
-  - "pip install pytest"
+  - "pip install -e '.[test]'"
 
 script:
-  - pytest tests/
+  - pytest
