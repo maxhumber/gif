@@ -29,7 +29,6 @@ def plot(date):
     ax.set_yticks([0, 2, 4, 6, 8, 10])
     ax.set_xticklabels([date.strftime("%b '%y")], **FONT)
     ax.set_yticklabels([0, 2, 4, 6, 8, '\n10\nhours'], **FONT)
-    plt.title('Time on Phone', **FONT)
 
 frames = []
 for date in df['date']:

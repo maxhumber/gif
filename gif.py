@@ -41,9 +41,9 @@ def frame(func):
             save_alt(plot, buffer, fmt="png")
         else:
             plt.savefig(buffer, format="png")
+            plt.close()
         buffer.seek(0)
         image = Image.open(buffer)
-        plt.close()
         return image
 
     return wrapper
