@@ -7,6 +7,7 @@ from PIL import Image
 
 try:
     from altair_saver import save as save_alt
+
     altair_saver_installed = True
 except ModuleNotFoundError:
     altair_saver_installed = False

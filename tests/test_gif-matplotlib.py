@@ -1,7 +1,7 @@
-import gif
+import pytest
 from matplotlib import pyplot as plt
 from PIL import Image
-import pytest
+import gif
 
 
 def test_frame():
@@ -9,7 +9,7 @@ def test_frame():
     def plot(x, y):
         plt.scatter(x, y)
 
-    frame = plot([10, 20], [30, 40])
+    frame = plot([0, 5], [0, 5])
     assert str(type(frame)) == "<class 'PIL.PngImagePlugin.PngImageFile'>"
 
 
@@ -19,10 +19,10 @@ def saved_gif():
     def plot(x, y):
         plt.scatter(x, y)
 
-    frames = [plot([10, 20], [30, 40]), plot([20, 30], [40, 50])]
-    gif.save(frames, "test.gif")
+    frames = [plot([0, 5], [0, 5]), plot([0, 10], [0, 10])]
+    gif.save(frames, "test-matplotlib.gif")
 
 
 def test_save(saved_gif):
-    im = Image.open("test.gif")
+    im = Image.open("test-matplotlib.gif")
     assert im.format == "GIF"

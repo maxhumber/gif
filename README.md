@@ -7,62 +7,124 @@
   <a href="https://pypi.python.org/pypi/gif"><img alt="PyPI" src="https://img.shields.io/pypi/v/gif.svg"></a>
   <a href="https://pepy.tech/project/gif"><img alt="Downloads" src="https://pepy.tech/badge/gif"></a>
 </p>
+
+
 #### About
 
-The extension for animated [matplotlib](https://matplotlib.org/) and [Altair](https://altair-viz.github.io/) animations.
+The extension for [matplotlib](https://matplotlib.org/) and [Altair](https://altair-viz.github.io/) animations.
 
 
 
-#### matplotlib
+#### Installation
 
-Install:
+gif is installed at the command line:
 
-```
+```sh
 pip install gif
 ```
 
-Import:
+Altair gifs require [additional dependencies](https://pypi.org/project/altair-saver/). These can be installed accordingly:
 
 ```
-import gif
+pip install gif[altair]
+```
+
+**Note**: altair-saver uses [Selenium](https://selenium.dev/selenium/docs/api/py/), which requires a properly configured installation of either [chromedriver](https://chromedriver.chromium.org/) or [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/).
+
+
+
+#### Usage (matplotlib)
+
+Imports and data:
+
+```python
+import random
 from matplotlib import pyplot as plt
+import gif
+
+x = [random.randint(0, 100) for _ in range(100)]
+y = [random.randint(0, 100) for _ in range(100)]
 ```
 
-Decorate a plot function with `gif.frame`:
+Decorate a plot function with `gif.frame` (and don't return anything):
 
 ```python
 @gif.frame
-def plot(x, y):
-    plt.figure(figsize=(5, 3), dpi=100)
-    plt.scatter(x, y)
+def plot(i):
+    xi = x[i*10:(i+1)*10]
+    yi = y[i*10:(i+1)*10]
+    plt.scatter(xi, yi)
     plt.xlim((0, 100))
     plt.ylim((0, 100))
 ```
 
-Build a bunch of "frames" with a standard for loop:
+Build a bunch of "frames" with a standard `for` loop:
 
 ```python
-from random import randint
-
 frames = []
-for _ in range(50):
-    x = [randint(0, 100) for _ in range(10)]
-    y = [randint(0, 100) for _ in range(10)]
-    frame = plot(x, y)
+for i in range(10):
+    frame = plot(i)
     frames.append(frame)
 ```
 
-Select the duration (milliseconds) between each frame and save:
+Specify the duration (in milliseconds) between each frame, and save:
 
+```python
+gif.save(frames, 'example.gif', duration=100)
 ```
-gif.save(frames, "examples/chaos.gif", duration=100)
+
+
+
+#### Usage (Altair)
+
+Imports and data:
+
+```python
+import random
+import altair as alt
+import pandas as pd
+import gif
+
+df = pd.DataFrame({
+    't': list(range(10)) * 10,
+    'x': [random.randint(0, 100) for _ in range(100)],
+    'y': [random.randint(0, 100) for _ in range(100)]
+})
+```
+
+Decorate a plot function with `gif.frame` and **return an Altair object**:
+
+```python
+@gif.frame
+def plot(i):
+    d = df[df['t'] == i]
+    chart = alt.Chart(d).encode(
+        x=alt.X('x', scale=alt.Scale(domain=(0, 100))),
+        y=alt.Y('y', scale=alt.Scale(domain=(0, 100)))
+    ).mark_circle()
+    return chart
+```
+
+Build a bunch of "frames" with a standard `for` loop:
+
+```python
+frames = []
+for i in range(10):
+    frame = plot(i)
+    frames.append(frame)
+```
+
+Specify the duration (in milliseconds) between each frame, and save:
+
+```python
+gif.save(frames, 'example.gif', duration=100)
 ```
 
 
 
+#### Gallery (matplotlib)
 
-
-#### matplotlib
+<I>Click on any image to see the source code</I>
 
 | [![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/attachment/attachment.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/attachment) | [![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/hop/hop.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/hop) | [![phone.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/phone/phone.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/phone) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -70,7 +132,9 @@ gif.save(frames, "examples/chaos.gif", duration=100)
 
 
 
-#### Altair 
+#### Gallery (Altair)
+
+<I>Click on any image to see the source code</I>
 
 | [![covid.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/covid/covid.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/covid) | [![emoji.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/emoji/emoji.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/emoji) | [![pyramid.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/pyramid/pyramid.gif)](https://github.com/maxhumber/gif/tree/master/gallery/altair/pyramid) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -78,8 +142,4 @@ gif.save(frames, "examples/chaos.gif", duration=100)
 
 
 
-```
-pip install gif[altair]
-```
-
-
+If you have a kick ass animation that you think should be in the Gallery, submit a PR!
