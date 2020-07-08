@@ -7,35 +7,30 @@
   <a href="https://pypi.python.org/pypi/gif"><img alt="PyPI" src="https://img.shields.io/pypi/v/gif.svg"></a>
   <a href="https://pepy.tech/project/gif"><img alt="Downloads" src="https://pepy.tech/badge/gif"></a>
 </p>
-
-
-
 #### About
 
-`gif` is a better way to build animated Matplotlib gifs.
+The extension for animated [matplotlib](https://matplotlib.org/) and [Altair](https://altair-viz.github.io/) animations.
 
 
 
-#### Installation
+#### matplotlib
+
+Install:
 
 ```
-pip install -U gif
+pip install gif
 ```
 
-
-
-#### Usage
-
-`gif` is easy to use. Just import:
+Import:
 
 ```
 import gif
 from matplotlib import pyplot as plt
 ```
 
-Decorate a Matplotlib plot function with `gif.frame`:
+Decorate a plot function with `gif.frame`:
 
-```
+```python
 @gif.frame
 def plot(x, y):
     plt.figure(figsize=(5, 3), dpi=100)
@@ -46,7 +41,7 @@ def plot(x, y):
 
 Build a bunch of "frames" with a standard for loop:
 
-```
+```python
 from random import randint
 
 frames = []
@@ -64,28 +59,29 @@ gif.save(frames, "examples/chaos.gif", duration=100)
 ```
 
 
-#### Examples
 
-Chaos ([code](https://github.com/maxhumber/gif/blob/master/examples/chaos.py)):
 
-![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif)
 
-Preferential Attachment ([code](https://github.com/maxhumber/gif/blob/master/examples/attachment.py), [theory](https://en.wikipedia.org/wiki/Preferential_attachment)):
+#### Gallery
 
-![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif)
+matplotlib:
 
-Wave ([code](https://github.com/maxhumber/gif/blob/master/examples/wave.py), [original](http://louistiao.me/posts/notebooks/save-matplotlib-animations-as-gifs)):
+| ![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif) | ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif) | ![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif) | ![tornado.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/tornado.gif) |                                                              |
 
-![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif)
 
-Hypothetical Outcome Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/hop.py), [original](https://www.r-bloggers.com/hypothetical-outcome-plots/)):
 
-![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif)
+Altair:
 
-Polar Plot ([code](https://github.com/maxhumber/gif/blob/master/examples/canada.py), [data](https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=2410000301#timeframe), [inspiration](https://www.dataquest.io/blog/climate-temperature-spirals-python/)):
+| ![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif) | ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif) | ![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif) | ![tornado.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/tornado.gif) |                                                              |
 
-![canada.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/canada.gif)
 
-Tornado ([code](https://github.com/maxhumber/gif/blob/master/examples/tornado.py), [inspiration](https://stackoverflow.com/questions/48563526/drawing-a-logarithmic-spiral-in-three-axes-in-python)):
 
-![tornado.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/tornado.gif)
+```
+pip install gif[altair]
+```
+
+
