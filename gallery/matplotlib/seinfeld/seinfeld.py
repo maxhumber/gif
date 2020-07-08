@@ -38,15 +38,6 @@ df = df[['episode', 'character', '%', 'e%']]
 df = df.sort_values(['episode', '%'])
 df['episode'] = df['episode'].apply(lambda x: str(x) + '0' if len(str(x)) == 3 else str(x))
 
-# play with and plot one episode
-one = df[df['episode'] == '1.02']
-e = one['episode'].values[0].split('.')
-plt.figure(figsize=(5, 5))
-plt.barh(one['character'], one['%'])
-plt.xlim([0, 1])
-plt.xticks([])
-plt.title(f'Season {e[0]} Episode {int(e[1])}');
-
 # colour mapping
 COLOURS = {
     'Jerry': '#0526E3',
@@ -56,27 +47,26 @@ COLOURS = {
 
 }
 
-# gif the plot!
 @gif.frame
 def plot(episode):
     ep = df[df['episode'] == episode]
     ep['color'] = ep['character'].map(COLOURS)
     title = ep['episode'].values[0].split('.')
-    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(8, 6))
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(5, 3), dpi=100)
     # episode plot
     axes[0].barh(ep['character'], ep['e%'], color=ep['color'])
     axes[0].set_xlim([0, 1])
     axes[0].set_xticks([])
-    axes[0].yaxis.set_tick_params(labelsize=16)
+    axes[0].yaxis.set_tick_params(labelsize=10)
     axes[0].yaxis.set_ticks_position('none')
     axes[0].set_facecolor("#FFFFFF")
-    axes[0].set_title(f'Season {title[0]} Episode {int(title[1])}', fontdict={'fontsize': 18}, pad=16)
+    axes[0].set_xlabel(f'Season {title[0]} Episode {int(title[1])}')
     # total plot
     axes[1].barh(ep['character'], ep['%'], color=ep['color'])
     axes[1].set_xlim([0, 1])
     axes[1].set_xticks([])
     axes[1].set_yticks([])
-    axes[1].set_title(f'Total', fontdict={'fontsize': 18}, pad=16)
+    axes[1].set_xlabel(f'Total')
     axes[1].set_facecolor("#FFFFFF")
 
 

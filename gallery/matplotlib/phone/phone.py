@@ -12,23 +12,18 @@ df = pd.DataFrame({
     'time': [float(d) for d in data.split(',')]
 })
 
-FONT = {'fontname':'Avenir', 'fontsize': 16}
-PALLET = ['#000000', '#FFFFFF']
-plt.rcParams["axes.facecolor"] = PALLET[1]
-plt.rcParams["figure.facecolor"] = PALLET[1]
-plt.rcParams["savefig.facecolor"] = PALLET[1]
 
 @gif.frame
 def plot(date):
     d = df[df['date'] <= date]
-    fig, ax = plt.subplots(figsize=(10, 6))
-    plt.plot(d['date'], d['time'], color=PALLET[0])
+    fig, ax = plt.subplots(figsize=(5, 3), dpi=100)
+    plt.plot(d['date'], d['time'])
     ax.set_xlim([START, END])
     ax.set_ylim([0, 10])
     ax.set_xticks([date])
     ax.set_yticks([0, 2, 4, 6, 8, 10])
-    ax.set_xticklabels([date.strftime("%b '%y")], **FONT)
-    ax.set_yticklabels([0, 2, 4, 6, 8, '\n10\nhours'], **FONT)
+    ax.set_xticklabels([date.strftime("%b '%y")])
+    ax.set_yticklabels([0, 2, 4, 6, 8, '\n10\nhours'])
 
 frames = []
 for date in df['date']:
