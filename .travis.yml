@@ -9,10 +9,11 @@ deploy:
   on:
     tags: true
 
+# https://dev.to/erikwhiting88/install-browsers-and-webdrivers-in-travisci-n76
 addons:
   chrome: stable
   firefox: latest
-  
+
 install:
   - "pip install -e '.[test]'"
   - wget -N https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip -P ~/
