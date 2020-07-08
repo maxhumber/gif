@@ -66,17 +66,17 @@ gif.save(frames, "examples/chaos.gif", duration=100)
 
 matplotlib:
 
-| ![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif) | ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif) | ![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif) |
+| ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/attachment/attachment.gif) | ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/hop/hop.gif) | ![phone.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/phone/phone.gif) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif) | ![tornado.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/tornado.gif) |                                                              |
+| ![seinfeld.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/seinfeld/seinfeld.gif) | ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/tornado/tornado.gif) |                                                              |
 
 
 
 Altair:
 
-| ![chaos.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/chaos.gif) | ![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/attachment.gif) | ![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/wave.gif) |
+| ![covid.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/covid/covid.gif) | ![emoji.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/emoji/emoji.gif) | ![pyramid.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/pyramid/pyramid.gif) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/hop.gif) | ![tornado.gif](https://raw.githubusercontent.com/maxhumber/gif/master/examples/tornado.gif) |                                                              |
+| ![textbooks.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/textbooks/textbooks.gif) | ![wave.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/altair/wave/wave.gif) |                                                              |
 
 
 
