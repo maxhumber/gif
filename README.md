@@ -26,6 +26,7 @@ pip install gif
 Altair gifs require [additional dependencies](https://pypi.org/project/altair-saver/). These can be installed accordingly:
 
 ```
+conda install -c conda-forge altair_saver
 pip install gif[altair]
 ```
 
