@@ -72,7 +72,7 @@ def save(frames, path, duration=100, fps=None, loop=0):
     - frames (list): collection of frames built with the frame decorator
     - path (str): filename with relative or absolute path
     - duration (int): milliseconds between frames
-    - fps (int): frames per second (takes precentence over `duration`)
+    - fps (int): frames per second (takes precedence over `duration`)
     - loop (int): number of times to loop the gif, 0 for inifinite
 
     Example:
