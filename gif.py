@@ -65,13 +65,15 @@ def frame(*save_args, **save_kwargs):
     return wrapper1
 
 
-def save(frames, path, duration=100):
+def save(frames, path, duration=100, fps=None, loop=0):
     """
     Save decorated frames to an animated gif.
 
     - frames (list): collection of frames built with the frame decorator
     - path (str): filename with relative or absolute path
     - duration (int): milliseconds between frames
+    - fps (int): frames per second (takes precentence over `duration`)
+    - loop (int): number of times to loop the gif, 0 for inifinite
 
     Example:
     ```
@@ -81,11 +83,12 @@ def save(frames, path, duration=100):
         frames.append(frame)
     ```
     """
+    duration = 1000/fps if fps else duration
     frames[0].save(
         path,
         save_all=True,
         append_images=frames[1:],
         optimize=True,
         duration=duration,
-        loop=0,
+        loop=loop,
     )
