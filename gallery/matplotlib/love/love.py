@@ -11,7 +11,8 @@ y = 13 * np.cos(t) - 5 * np.cos(2 * t) - 2 * np.cos(3 * t) - np.cos(4 * t)
 
 @gif.frame
 def plot_love(x, y):
-    plt.scatter(x, y, 60, c="g", alpha=0.7, marker=r'$\heartsuit$')
+    plt.figure(figsize=(5, 3), dpi=100)
+    plt.scatter(x, y, 60, c="r", alpha=0.7, marker=r'$\heartsuit$')
     plt.axis("off")
 
 
