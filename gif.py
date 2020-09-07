@@ -16,7 +16,9 @@ class MissingExtension(Exception):
     pass
 
 
-def frame(*save_args, **save_kwargs):
+save_kwargs = {}
+
+def frame(func):
     """
     Decorator for a matplotlib plot function.
 
@@ -46,23 +48,21 @@ def frame(*save_args, **save_kwargs):
     Use the `save_args` and `save_kwargs` to pass additional arguments such
     as the dpi to the `plt.save()` and `altair_saver.save()` methods.
     """
-    def wrapper1(func):
-        def wrapper2(*args, **kwargs):
-            buffer = io.BytesIO()
-            plot = func(*args, **kwargs)
-            if "altair" in str(type(plot)):
-                if not altair_saver_installed:
-                    raise MissingExtension("pip install gif[altair]")
-                save_alt(plot, buffer, fmt="png", *save_args, **save_kwargs)
-            else:
-                plt.savefig(buffer, format="png", *save_args, **save_kwargs)
-                plt.close()
-            buffer.seek(0)
-            image = Image.open(buffer)
-            return image
+    def wrapper(*args, **kwargs):
+        buffer = io.BytesIO()
+        plot = func(*args, **kwargs)
+        if "altair" in str(type(plot)):
+            if not altair_saver_installed:
+                raise MissingExtension("pip install gif[altair]")
+            save_alt(plot, buffer, fmt="png", **save_kwargs)
+        else:
+            plt.savefig(buffer, format="png", **save_kwargs)
+            plt.close()
+        buffer.seek(0)
+        image = Image.open(buffer)
+        return image
 
-        return wrapper2
-    return wrapper1
+    return wrapper
 
 
 def save(frames, path, duration=100, fps=None, loop=0):
