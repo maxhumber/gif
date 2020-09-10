@@ -24,7 +24,7 @@ gif is installed at the command line:
 pip install -U gif
 ```
 
-Depending on which flavour of gif you plan to use you'll likely need some additional dependencies. These can be installed accordingly:
+Depending on which flavour of gif you plan to use you'll likely need some additional dependencies:
 
 ```sh
 pip install "gif[altair]"     
