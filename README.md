@@ -32,7 +32,7 @@ pip install "gif[matplotlib]"
 pip install "gif[plotly]"
 ```
 
-**Note**: gif[altair] uses [Selenium](https://selenium.dev/selenium/docs/api/py/), which requires a properly configured installation of either [chromedriver](https://chromedriver.chromium.org/) or [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/).
+**Note**: gif[altair] uses [Selenium](https://selenium.dev/selenium/docs/api/py/), which requires a properly configured [chromedriver](https://chromedriver.chromium.org/) or [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/).
 
 
 
@@ -205,8 +205,8 @@ gif.save(frames, 'example.gif', duration=100)
 
 <I>Click on any image to see the source code</I>
 
-| [![bubble.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/bubble/bubble.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/bubble) | [![swirl.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/swirl/swirl.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/swirl) |      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| [![bubble.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/bubble/bubble.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/bubble) | [![swirl.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/swirl/swirl.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/swirl) | [![waterfall.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/waterfall/waterfall.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/waterfall) |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 
 
 
