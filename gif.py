@@ -158,9 +158,9 @@ def save(frames, path, duration=100, unit="milliseconds", between="frames", loop
     """Save decorated frames to an animated gif.
 
     - frames (list): collection of frames built with the gif.frame decorator
-    - path (str): filename with relative or absolute path
+    - path (str): filename with relative/absolute path
     - duration (int/float): time (with reference to unit and between)
-    - unit {"milliseconds", "seconds"}: time unit value
+    - unit {"ms" or "milliseconds", "s" or "seconds"}: time unit value
     - between {"frames", "startend"}: duration between "frames" or the entire gif ("startend")
     - loop (bool): infinitely loop the animation
 
@@ -175,9 +175,9 @@ def save(frames, path, duration=100, unit="milliseconds", between="frames", loop
     ```
     """
 
-    if unit == "milliseconds":
+    if unit in ["ms", "milliseconds"]:
         pass
-    elif unit == "seconds":
+    elif unit in ["s", "seconds"]:
         duration *= 1000
     else:
         raise ValueError(unit)
