@@ -1,6 +1,6 @@
 import gif
-import numpy as np
 from matplotlib import pyplot as plt
+import numpy as np
 
 
 # formula see https://www.wolframalpha.com/share/clip?f=d41d8cd98f00b204e9800998ecf8427edn0q2vrnts
@@ -12,7 +12,7 @@ y = 13 * np.cos(t) - 5 * np.cos(2 * t) - 2 * np.cos(3 * t) - np.cos(4 * t)
 @gif.frame
 def plot_love(x, y):
     plt.figure(figsize=(5, 3), dpi=100)
-    plt.scatter(x, y, 60, c="r", alpha=0.7, marker=r'$\heartsuit$')
+    plt.scatter(x, y, 60, c="r", alpha=0.7, marker=r"$\heartsuit$")
     plt.axis("off")
 
 
@@ -21,5 +21,4 @@ for i in range(1, len(x)):
     of = plot_love(x[:i], y[:i])
     frames.append(of)
 
-gif.save(frames, 'love.gif', duration=80)
-
+gif.save(frames, "love.gif", duration=80)

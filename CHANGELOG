@@ -1,0 +1,7 @@
+3.0.0
+- added Plotly support!
+- moved matplotlib dependency ( pip install gif[matplotlib])
+- added kwargs save support in gif.options.<extension> (gif.options.matplotlib)
+- Added new user contributed "love" example
+- Added between {"frames", "startend"} save option
+- Added support for seconds and milliseconds

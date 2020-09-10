@@ -1,7 +1,8 @@
 # Custom
+paper/
 playground.py
-TODO
 test.gif
+test-*.gif
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

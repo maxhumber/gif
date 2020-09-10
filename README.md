@@ -11,7 +11,7 @@
 
 ### About
 
-The extension for [matplotlib](https://matplotlib.org/) and [Altair](https://altair-viz.github.io/) animations.
+The extension for [Altair](https://altair-viz.github.io/), [matplotlib](https://matplotlib.org/), and [Plotly](https://plotly.com/python/) animations.
 
 
 
@@ -23,55 +23,15 @@ gif is installed at the command line:
 pip install gif
 ```
 
-Altair gifs require [additional dependencies](https://pypi.org/project/altair-saver/). These can be installed accordingly:
+Depending on which flavour of gif you plan to use you'll likely need some additional dependencies. These can be installed accordingly:
 
 ```
 pip install gif[altair]
+pip install gif[matplotlib]
+pip install gif[plotly]
 ```
 
-**Note**: altair-saver uses [Selenium](https://selenium.dev/selenium/docs/api/py/), which requires a properly configured installation of either [chromedriver](https://chromedriver.chromium.org/) or [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/).
-
-
-
-### Usage (matplotlib)
-
-Imports and data:
-
-```python
-import random
-from matplotlib import pyplot as plt
-import gif
-
-x = [random.randint(0, 100) for _ in range(100)]
-y = [random.randint(0, 100) for _ in range(100)]
-```
-
-Decorate a plot function with `gif.frame` (and don't return anything):
-
-```python
-@gif.frame
-def plot(i):
-    xi = x[i*10:(i+1)*10]
-    yi = y[i*10:(i+1)*10]
-    plt.scatter(xi, yi)
-    plt.xlim((0, 100))
-    plt.ylim((0, 100))
-```
-
-Build a bunch of "frames" with a standard `for` loop:
-
-```python
-frames = []
-for i in range(10):
-    frame = plot(i)
-    frames.append(frame)
-```
-
-Specify the duration (in milliseconds) between each frame, and save:
-
-```python
-gif.save(frames, 'example.gif', duration=100)
-```
+**Note**: gif[altair] uses [Selenium](https://selenium.dev/selenium/docs/api/py/), which requires a properly configured installation of either [chromedriver](https://chromedriver.chromium.org/) or [geckodriver](https://firefox-source-docs.mozilla.org/testing/geckodriver/).
 
 
 
@@ -122,13 +82,55 @@ gif.save(frames, 'example.gif', duration=100)
 
 
 
+### Usage (matplotlib)
+
+Imports and data:
+
+```python
+import random
+from matplotlib import pyplot as plt
+import gif
+
+x = [random.randint(0, 100) for _ in range(100)]
+y = [random.randint(0, 100) for _ in range(100)]
+```
+
+Decorate a plot function with `gif.frame` (and don't return anything):
+
+```python
+@gif.frame
+def plot(i):
+    xi = x[i*10:(i+1)*10]
+    yi = y[i*10:(i+1)*10]
+    plt.scatter(xi, yi)
+    plt.xlim((0, 100))
+    plt.ylim((0, 100))
+```
+
+Build a bunch of "frames" with a standard `for` loop:
+
+```python
+frames = []
+for i in range(10):
+    frame = plot(i)
+    frames.append(frame)
+```
+
+Specify the duration (in milliseconds) between each frame, and save:
+
+```python
+gif.save(frames, 'example.gif', duration=100)
+```
+
+
+
 ### Gallery (matplotlib)
 
 <I>Click on any image to see the source code</I>
 
 | [![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/attachment/attachment.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/attachment) | [![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/hop/hop.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/hop) | [![phone.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/phone/phone.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/phone) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![seinfeld.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/seinfeld/seinfeld.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/seinfeld) | [![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/tornado/tornado.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/tornado) |                                                              |
+| [![seinfeld.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/seinfeld/seinfeld.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/seinfeld) | [![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/tornado/tornado.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/tornado) | [![love.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/love/love.gif)](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/love) |
 
 
 
@@ -143,4 +145,4 @@ gif.save(frames, 'example.gif', duration=100)
 
 
 
-If you have a kick ass animation that you think should be in the Gallery, submit a PR!
+If you have a dope ass animation that you think should be in the Gallery, submit a PR!
