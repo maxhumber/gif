@@ -10,7 +10,6 @@ from PIL import Image
 
 random.seed(2020)
 
-
 @gif.frame
 def plot_arrival(count, count_last):
     plt.figure(figsize=(5, 3), dpi=100)
