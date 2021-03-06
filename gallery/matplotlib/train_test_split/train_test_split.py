@@ -1,6 +1,4 @@
- ####
- # https://towardsdatascience.com/creating-beautiful-gif-with-python-for-your-data-analysis-ac50c618b559
-
+ 
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O 
 import seaborn as sns
@@ -8,8 +6,8 @@ import matplotlib.pyplot as plt
 import gif
 plt.style.use('fivethirtyeight')
 
-# Data obtained from Kaggle
-# anmidev/smart-meters-in-london?select=weather_hourly_darksky.csv
+
+#Data Source from KAggle: https://www.kaggle.com/jeanmidev/smart-meters-in-london
 df=pd.read_csv('london_weather_hourly_darksky.csv')
 
 
@@ -25,6 +23,8 @@ df.set_index('date',drop=True, inplace=True)
 # Resampling on a monthly bases
 df=df.resample('M').mean()
 
+END=df.index[-1]
+START=df.index[0]
 
 @gif.frame
 def plot_split(df,date,split_date):
@@ -54,3 +54,7 @@ for date in pd.date_range(start = df.index[0], end = df.index[-1],freq = '1M'):
     frame = plot_split(df,date,'2013-06-21')
     frames.append(frame)
 gif.save(frames, "train_test_split.gif", duration=0.5 ,unit = 's')
+
+
+# For more information on this library check out the full tutorial on medium:
+# https://towardsdatascience.com/creating-beautiful-gif-with-python-for-your-data-analysis-ac50c618b559

@@ -52,3 +52,6 @@ for date in pd.date_range(start = df.index[0], end = df.index[-1],freq = '1M'):
     frame = plot(df,date)
     frames.append(frame)
 gif.save(frames, "subplots.gif", duration=0.5 ,unit = 's')
+
+# For more information on this library check out the full tutorial on medium:
+# https://towardsdatascience.com/creating-beautiful-gif-with-python-for-your-data-analysis-ac50c618b559

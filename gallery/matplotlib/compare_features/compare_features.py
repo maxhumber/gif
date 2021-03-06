@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import gif
 plt.style.use('fivethirtyeight')
 
-# Data obtained from Kaggle
-# anmidev/smart-meters-in-london?select=weather_hourly_darksky.csv
+
+#Data Source from KAggle: https://www.kaggle.com/jeanmidev/smart-meters-in-london
 df=pd.read_csv('london_weather_hourly_darksky.csv')
 
 #Renaming the time coloumn
@@ -42,3 +42,6 @@ for date in pd.date_range(start = df.index[0], end = df.index[-1],freq = '1M'):
     frame = plot(df,date)
     frames.append(frame)
 gif.save(frames, "compare_2_features.gif", duration=0.5 ,unit = 's')
+
+# For more information on this library check out the full tutorial on medium:
+# https://towardsdatascience.com/creating-beautiful-gif-with-python-for-your-data-analysis-ac50c618b559
