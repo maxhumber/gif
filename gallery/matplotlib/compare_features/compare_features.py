@@ -3,7 +3,6 @@ import pandas as pd # data processing, CSV file I/O
 import seaborn as sns
 import matplotlib.pyplot as plt
 import gif
-plt.style.use('fivethirtyeight')
 
 
 #Data Source from KAggle: https://www.kaggle.com/jeanmidev/smart-meters-in-london
@@ -25,16 +24,15 @@ df=df.resample('M').mean()
 def plot(df,date):
     
     df=df.loc[df.index[0]:pd.Timestamp(date)]
-    fig, (ax1) = plt.subplots(1,figsize=(15,20),dpi=100)
     
-    fig, ax1 = plt.subplots(figsize = (20,5))
-    ax1.plot(df.temperature, color = 'tab:orange',marker='o', linestyle='--', linewidth=5,markersize=15)
-    ax1.set_ylabel('TEMPERATURE',color = 'tab:orange',fontsize=20)
+    fig, ax1 = plt.subplots(1,figsize=(5,3),dpi=100)
     
+    ax1.plot(df.temperature, color = 'tab:orange',marker='o', linestyle='--', linewidth=1,markersize=3)
+    ax1.set_ylabel('TEMPERATURE',color = 'tab:orange')
     ax2 = ax1.twinx()
-    ax2.plot(df.visibility, color = 'tab:blue',marker='o', linestyle='--', linewidth=5,markersize=15)
-    ax2.set_ylabel('VISIBILITY',color = 'tab:blue',fontsize=20)
-    plt.title('Temperature vs Visibility',fontsize=30)
+    ax2.plot(df.visibility, color = 'tab:blue',marker='o', linestyle='--', linewidth=1,markersize=3)
+    ax2.set_ylabel('VISIBILITY',color = 'tab:blue')
+    plt.title('Temperature vs Visibility')
 
 #### ANIMATION CREATION ####
 frames = []
@@ -43,5 +41,5 @@ for date in pd.date_range(start = df.index[0], end = df.index[-1],freq = '1M'):
     frames.append(frame)
 gif.save(frames, "compare_2_features.gif", duration=0.5 ,unit = 's')
 
-# For more information on this library check out the full tutorial on medium:
+# For more information on this animation check out the full tutorial on Medium:
 # https://towardsdatascience.com/creating-beautiful-gif-with-python-for-your-data-analysis-ac50c618b559
