@@ -1,6 +1,8 @@
-import pandas as pd
-from matplotlib import pyplot as plt
 import gif
+
+from matplotlib import pyplot as plt
+import pandas as pd
+
 
 START = pd.Timestamp("2019-04-20")
 END = pd.Timestamp("2020-05-01")

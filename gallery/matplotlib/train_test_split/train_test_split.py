@@ -25,9 +25,7 @@ def plot_split(df, date, split_date):
     fig, (ax1) = plt.subplots(1, figsize=(5, 3), dpi=100)
     if date < pd.Timestamp(split_date):
         ax1.axvspan(START, date, alpha=0.5, color="#33FF92")
-        ax1.text(
-            pd.Timestamp("2012-01-31"), y=12, s="TRAIN"
-        )
+        ax1.text(pd.Timestamp("2012-01-31"), y=12, s="TRAIN")
     if date > pd.Timestamp(split_date):
         ax1.axvspan(pd.Timestamp(split_date), date, alpha=0.5, color="#FCFF33")
         ax1.text(pd.Timestamp("2014-01-31"), y=12, s="TEST")
@@ -51,4 +49,9 @@ for date in pd.date_range(start=df.index[0], end=df.index[-1], freq="1M"):
     frame = plot_split(df, date, "2013-06-21")
     frames.append(frame)
 
-gif.save(frames, "gallery/matplotlib/train_test_split/train_test_split.gif", duration=0.5, unit="s")
+gif.save(
+    frames,
+    "gallery/matplotlib/train_test_split/train_test_split.gif",
+    duration=0.5,
+    unit="s",
+)

@@ -1,10 +1,7 @@
-from collections import Counter
-import io
-import functools
-import random
-import time
-
 import gif
+
+import random
+from collections import Counter
 from matplotlib import pyplot as plt
 from PIL import Image
 

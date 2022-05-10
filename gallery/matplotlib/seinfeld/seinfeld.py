@@ -1,7 +1,9 @@
-import re
-import pandas as pd
-from matplotlib import pyplot as plt
 import gif
+
+import re
+from matplotlib import pyplot as plt
+import pandas as pd
+
 
 # script cleaning
 df = pd.read_csv("gallery/matplotlib/seinfeld/seinfeld.csv")

@@ -19,6 +19,7 @@ df = df.resample("M").mean()
 END = df.index[-1]
 START = df.index[0]
 
+
 @gif.frame
 def plot(df, date):
     df = df.loc[df.index[0] : pd.Timestamp(date)]

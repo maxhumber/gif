@@ -13,6 +13,7 @@ df["date"] = pd.to_datetime(df["date"])
 df.set_index("date", drop=True, inplace=True)
 df = df.resample("M").mean()
 
+
 @gif.frame
 def plot(df, date):
     df = df.loc[df.index[0] : pd.Timestamp(date)]
@@ -38,9 +39,15 @@ def plot(df, date):
     ax2.set_ylabel("VISIBILITY", color="tab:blue")
     plt.title("Temperature vs Visibility")
 
+
 frames = []
 for date in pd.date_range(start=df.index[0], end=df.index[-1], freq="1M"):
     frame = plot(df, date)
     frames.append(frame)
 
-gif.save(frames, "gallery/matplotlib/compare_features/compare_features.gif", duration=0.5, unit="s")
+gif.save(
+    frames,
+    "gallery/matplotlib/compare_features/compare_features.gif",
+    duration=0.5,
+    unit="s",
+)
