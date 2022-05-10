@@ -38,9 +38,6 @@ pip install "gif[plotly]"
 
 <details>
     <summary>Altair</summary>
-
-    Imports and data:
-
     ```python
     import random
     import altair as alt
@@ -52,11 +49,9 @@ pip install "gif[plotly]"
         'x': [random.randint(0, 100) for _ in range(100)],
         'y': [random.randint(0, 100) for _ in range(100)]
     })
-    ```
 
-    Decorate a plot function with `gif.frame` and **return an Altair object**:
+    # Decorate a plot function with `gif.frame` and **return an Altair object**:
 
-    ```python
     @gif.frame
     def plot(i):
         d = df[df['t'] == i]
@@ -67,18 +62,15 @@ pip install "gif[plotly]"
         return chart
     ```
 
-    Build a bunch of "frames" with a standard `for` loop:
+    # Build a bunch of "frames" with a standard `for` loop:
 
-    ```python
     frames = []
     for i in range(10):
         frame = plot(i)
         frames.append(frame)
-    ```
 
-    Specify the duration between each frame and save:
+    # Specify the duration between each frame and save:
 
-    ```python
     gif.save(frames, 'example.gif', duration=100, unit="ms", between="frames")
     ```
 </details>
