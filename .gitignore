@@ -3,6 +3,7 @@ paper/
 playground.py
 test.gif
 test-*.gif
+geckodriver.log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

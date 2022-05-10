@@ -11,6 +11,11 @@ pip install -U gif
 
 ---
 
+#### 4.0 (2022-05-10)
+
+- QOL: Bumped upstream dependencies
+- Tests: Simplified pytest suite
+
 #### 3.0.0 (2020-09-10)
 
 - Feature: Plotly support! (Thanks @alanrivetta for the suggestion!)

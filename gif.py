@@ -3,29 +3,30 @@ from io import BytesIO as Buffer
 from PIL import Image
 
 
+class MissingExtension(Exception):
+    pass
+
+
 class Options:
-    """Global **kwargs save/export options (refer to extension docs)
+    """Global save and export options
 
-    Altair | Truncated list of **kwargs save/export settings:
-
-    - scale_factor (float): The scale factor to use when exporting the figure
-
-    matplotlib | Truncated list of **kwargs save/export settings:
-
+    matplotlib settings:
     - dpi (int): The resolution in dots per inch
     - facecolor (colorspec): The facecolor of the figure
     - edgecolor (colorspec): The edgecolor of the figure
     - transparent (bool): If True, the axes patches will all be transparent
 
-    Plotly | Truncated list **kwargs save/export settings:
+    Altair:
+    - scale_factor (float): The scale factor to use when exporting the figure
 
+    Plotly:
     - width (int): The width of the exported image in layout pixels
     - height (int): The height of the exported image in layout pixels
     - scale (float): The scale factor to use when exporting the figure
 
     Examples:
 
-    ```
+    ```python
     gif.options.altair["scale_factor"] = 2
     gif.options.matplotlib["dpi"] = 300
     gif.options.plotly["scale"] = 0.5
@@ -40,9 +41,6 @@ class Options:
 
 
 options = Options()
-
-
-# Extension compatibility checks
 
 
 try:
@@ -63,118 +61,23 @@ except ModuleNotFoundError:
     options._extensions["plotly"] = False
 
 
-# Buffer and triage functions
-
-
-def buffer_altair(plot, buffer):
-    kwargs = options.altair
-    save_altair(plot, buffer, fmt="png", **kwargs)
-
-
-def buffer_matplotlib(plot, buffer):
-    kwargs = options.matplotlib
-    plt.savefig(buffer, format="png", **kwargs)
-    plt.close()
-
-
-def buffer_plotly(plot, buffer):
-    kwargs = options.plotly
-    plot.write_image(buffer, format="png", **kwargs)
-
-
-class MissingExtension(Exception):
-    pass
-
-
-def triage(plot, buffer):
+def _triage(plot, buffer):
     if "altair" in str(type(plot)):
         if not options._extensions["altair"]:
             raise MissingExtension("pip install gif[altair]")
-        buffer_altair(plot, buffer)
+        save_altair(plot, buffer, fmt="png", **options.altair)
     elif "plotly" in str(type(plot)):
         if not options._extensions["plotly"]:
             raise MissingExtension("pip install gif[plotly]")
-        buffer_plotly(plot, buffer)
+        plot.write_image(buffer, format="png", **options.plotly)
     else:
         if not options._extensions["matplotlib"]:
             raise MissingExtension("pip install gif[matplotlib]")
-        buffer_matplotlib(plot, buffer)
+        plt.savefig(buffer, format="png", **options.matplotlib)
+        plt.close()
 
 
-# Main API
-
-
-def frame(func):
-    """Plot function decorator.
-
-    Usage (Altair):
-    ```
-    @gif.frame
-    def plot(i):
-        d = df[df['i'] <= i]
-        chart = alt.Chart(d).mark_circle().encode(
-            x=alt.X('x', scale=alt.Scale(domain=(0, 100))),
-            y=alt.Y('y', scale=alt.Scale(domain=(0, 100)))
-        )
-        return chart
-    ```
-
-    Usage (matplotlib):
-    ```
-    @gif.frame
-    def plot(i):
-        plt.scatter(x[:i], y[:i])
-        plt.xlim((0, 100))
-        plt.ylim((0, 100))
-    ```
-
-    Usage (Plotly):
-    ```
-    @frame
-    def plot(i):
-        layout = go.Layout(
-            xaxis = {'range': [0, 100]},
-            yaxis = {'range': [0, 100]}
-        )
-        fig = go.Figure(layout=layout)
-        fig.add_trace(go.Scatter(x=x[:i], y=y[:i], mode="markers"))
-        return fig
-    ```
-    """
-
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        buffer = Buffer()
-        plot = func(*args, **kwargs)
-        triage(plot, buffer)
-        buffer.seek(0)
-        image = Image.open(buffer)
-        return image
-
-    return wrapper
-
-
-def save(frames, path, duration=100, unit="milliseconds", between="frames", loop=True):
-    """Save decorated frames to an animated gif.
-
-    - frames (list): collection of frames built with the gif.frame decorator
-    - path (str): filename with relative/absolute path
-    - duration (int/float): time (with reference to unit and between)
-    - unit {"ms" or "milliseconds", "s" or "seconds"}: time unit value
-    - between {"frames", "startend"}: duration between "frames" or the entire gif ("startend")
-    - loop (bool): infinitely loop the animation
-
-    Example:
-    ```
-    frames = []
-    for i in range(10):
-        frame = plot(i)
-        frames.append(frame)
-
-    gif.save(frames, "test.gif", duration=100)
-    ```
-    """
-
+def _time(frames, duration, unit, between):
     if unit in ["ms", "milliseconds"]:
         pass
     elif unit in ["s", "seconds"]:
@@ -189,6 +92,77 @@ def save(frames, path, duration=100, unit="milliseconds", between="frames", loop
     else:
         raise ValueError(between)
 
+    return duration
+
+
+def frame(func):
+    """Plot function decorator
+
+    matplotlib:
+    ```python
+    @gif.frame
+    def plot(i):
+        plt.scatter(x[:i], y[:i])
+        plt.xlim((0, 100))
+        plt.ylim((0, 100))
+    ```
+
+    Altair:
+    ```python
+    @gif.frame
+    def plot(i):
+        d = df[df['i'] <= i]
+        chart = alt.Chart(d).mark_circle().encode(
+            x=alt.X('x', scale=alt.Scale(domain=(0, 100))),
+            y=alt.Y('y', scale=alt.Scale(domain=(0, 100)))
+        )
+        return chart
+    ```
+
+    Plotly:
+    ```python
+    @frame
+    def plot(i):
+        layout = go.Layout(xaxis={'range': [0, 100]}, yaxis={'range': [0, 100]})
+        fig = go.Figure(layout=layout)
+        fig.add_trace(go.Scatter(x=x[:i], y=y[:i], mode="markers"))
+        return fig
+    ```
+    """
+
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        buffer = Buffer()
+        plot = func(*args, **kwargs)
+        _triage(plot, buffer)
+        buffer.seek(0)
+        img = Image.open(buffer)
+        return img
+
+    return wrapper
+
+
+def save(frames, path, duration=100, unit="milliseconds", between="frames", loop=True):
+    """Save frames to gif
+
+    - frames (list): collection of frames built with the @gif.frame decorator
+    - path (str): filename with relative/absolute path
+    - duration (int/float): time (with reference to unit and between)
+    - unit {"ms", "milliseconds", "s", "seconds"}: time unit value
+    - between {"frames", "startend"}: duration between "frames" or the entire gif ("startend")
+    - loop (bool): infinitely loop the animation
+
+    Example:
+    ```python
+    frames = []
+    for i in range(10):
+        frame = plot(i)
+        frames.append(frame)
+
+    gif.save(frames, "test.gif", duration=3, unit="seconds", between="startend")
+    ```
+    """
+
     kwargs = {}
 
     if loop:
@@ -199,6 +173,6 @@ def save(frames, path, duration=100, unit="milliseconds", between="frames", loop
         save_all=True,
         append_images=frames[1:],
         optimize=True,
-        duration=duration,
+        duration=_time(frames, duration, unit, between),
         **kwargs
     )

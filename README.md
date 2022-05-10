@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/maxhumber/gif/master/logo/gif.png" width="300px" alt="gif">
+  <img src="https://raw.githubusercontent.com/maxhumber/gif/master/logo/gif.png" width="250px" alt="gif">
 </h3>
 <p align="center">
   <a href="https://github.com/maxhumber/gif"><img alt="GitHub" src="https://img.shields.io/github/license/maxhumber/gif"></a>
@@ -12,13 +12,11 @@
 
 ### About
 
-The extension for [Altair](https://altair-viz.github.io/), [matplotlib](https://matplotlib.org/), and [Plotly](https://plotly.com/python/) animations.
+The Animation Extension for [matplotlib](https://matplotlib.org/), [Altair](https://altair-viz.github.io/), and [Plotly](https://plotly.com/python/) graphs. 
 
 
 
 ### Installation
-
-gif is installed at the command line:
 
 ```sh
 pip install -U gif
@@ -36,51 +34,54 @@ pip install "gif[plotly]"
 
 
 
-### Usage (Altair)
+### Usage
 
-Imports and data:
+<details>
+    <summary>Altair</summary>
 
-```python
-import random
-import altair as alt
-import pandas as pd
-import gif
+    Imports and data:
 
-df = pd.DataFrame({
-    't': list(range(10)) * 10,
-    'x': [random.randint(0, 100) for _ in range(100)],
-    'y': [random.randint(0, 100) for _ in range(100)]
-})
-```
+    ```python
+    import random
+    import altair as alt
+    import pandas as pd
+    import gif
 
-Decorate a plot function with `gif.frame` and **return an Altair object**:
+    df = pd.DataFrame({
+        't': list(range(10)) * 10,
+        'x': [random.randint(0, 100) for _ in range(100)],
+        'y': [random.randint(0, 100) for _ in range(100)]
+    })
+    ```
 
-```python
-@gif.frame
-def plot(i):
-    d = df[df['t'] == i]
-    chart = alt.Chart(d).encode(
-        x=alt.X('x', scale=alt.Scale(domain=(0, 100))),
-        y=alt.Y('y', scale=alt.Scale(domain=(0, 100)))
-    ).mark_circle()
-    return chart
-```
+    Decorate a plot function with `gif.frame` and **return an Altair object**:
 
-Build a bunch of "frames" with a standard `for` loop:
+    ```python
+    @gif.frame
+    def plot(i):
+        d = df[df['t'] == i]
+        chart = alt.Chart(d).encode(
+            x=alt.X('x', scale=alt.Scale(domain=(0, 100))),
+            y=alt.Y('y', scale=alt.Scale(domain=(0, 100)))
+        ).mark_circle()
+        return chart
+    ```
 
-```python
-frames = []
-for i in range(10):
-    frame = plot(i)
-    frames.append(frame)
-```
+    Build a bunch of "frames" with a standard `for` loop:
 
-Specify the duration between each frame and save:
+    ```python
+    frames = []
+    for i in range(10):
+        frame = plot(i)
+        frames.append(frame)
+    ```
 
-```python
-gif.save(frames, 'example.gif', duration=100, unit="ms", between="frames")
-```
+    Specify the duration between each frame and save:
 
+    ```python
+    gif.save(frames, 'example.gif', duration=100, unit="ms", between="frames")
+    ```
+</details>
 
 
 ### Usage (matplotlib)
@@ -209,8 +210,3 @@ gif.save(frames, 'example.gif', duration=100)
 
 | [![bubble.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/bubble/bubble.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/bubble) | [![swirl.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/swirl/swirl.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/swirl) | [![waterfall.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/plotly/waterfall/waterfall.gif)](https://github.com/maxhumber/gif/tree/master/gallery/plotly/waterfall) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-
-
-
-
-If you have a dope ass animation that you think should be in the Gallery, submit a PR!
