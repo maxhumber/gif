@@ -29,4 +29,4 @@ for i in range(N):
     frame = plot_spiral(i)
     frames.append(frame)
 
-gif.save(frames, "gallery/matplotlib/tornado/tornado.gif", duration=50)
+gif.save(frames, "gallery/matplotlib/spiral/spiral.gif", duration=50)
