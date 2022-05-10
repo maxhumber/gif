@@ -38,7 +38,6 @@ pip install "gif[plotly]"
 
 <details>
     <summary>Altair</summary>  
-    ```python  
     import random  
     import altair as alt  
     import pandas as pd
@@ -71,7 +70,6 @@ pip install "gif[plotly]"
     # Specify the duration between each frame and save:
     
     gif.save(frames, 'example.gif', duration=100, unit="ms", between="frames")  
-    ```
 </details>
 
 
