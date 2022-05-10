@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 setup(
     name="gif",
     version="4.0",
-    description="The Animation Extension for matplotlib, Altair, and Plotly graphs",
+    description="The animation extension for matplotlib, Altair, and Plotly graphs",
     long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
