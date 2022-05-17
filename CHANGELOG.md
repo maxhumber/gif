@@ -13,7 +13,9 @@ pip install -U gif
 
 #### 4.0 (2022-05-10)
 
-- QOL: Bumped upstream dependencies
+- Removed: Altair support
+- Removed: Plotly support
+- Bumped: Upstream dependencies
 - Tests: Simplified pytest suite
 
 #### 3.0.0 (2020-09-10)
