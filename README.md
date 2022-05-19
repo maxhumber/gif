@@ -15,13 +15,13 @@ The [matplotlib](https://matplotlib.org/) Animation Extension
 
 ### Quickstart
 
-<u>Install</u>
+Install
 
 ```sh
 pip install gif
 ```
 
-<u>Usage</u>
+Usage
 
 ```python
 import random

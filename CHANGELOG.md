@@ -11,7 +11,7 @@ pip install -U gif
 
 ---
 
-#### 4.0 (2022-05-10)
+#### 4.0 (rc-1)
 
 - Removed: Altair support
 - Removed: Plotly support
