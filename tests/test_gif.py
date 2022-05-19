@@ -31,9 +31,9 @@ def default_file(tmpdir_factory):
 
 @pytest.fixture(scope="session")
 def hd_file(tmpdir_factory):
-    gif.options["dpi"] = 300
+    gif.options.matplotlib["dpi"] = 300
     frames = [plot([0, 5], [0, 5]), plot([0, 10], [0, 10])]
-    del gif.options["dpi"]
+    gif.options.reset()
     path = str(tmpdir_factory.mktemp("matplotlib").join("hd.gif"))
     gif.save(frames, path)
     return path
@@ -43,7 +43,7 @@ def hd_file(tmpdir_factory):
 def long_file(tmpdir_factory):
     frames = [plot([0, 5], [0, 5]), plot([0, 10], [0, 10])]
     path = str(tmpdir_factory.mktemp("matplotlib").join("long.gif"))
-    gif.save(frames, path, duration=5, unit="s", between="startend")
+    gif.save(frames, path, duration=2500)
     return path
 
 

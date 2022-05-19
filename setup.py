@@ -32,7 +32,8 @@ setup(
             "black>=22.3.0",
             "matplotlib>=3.5.2",
             "pandas>=1.4.2",
-            "pytest>=7.1.2"
+            "pip>=22.1",
+            "pytest>=7.1.2",
         ],
     },
     python_requires=">=3.9",

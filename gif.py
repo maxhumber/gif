@@ -4,20 +4,25 @@ from matplotlib import pyplot as plt
 from PIL import Image
 
 
-"""Matplotlib image and export options
+class Options:
+    """Matplotlib image and export options
 
-Arguments:
-- dpi (int): Image resolution in "dots-per-inch"
-- facecolor (colorspec): Figure face color
-- edgecolor (colorspec): Figure edge color
-- transparent (bool): Make ax patches transparent
+    https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
 
-Example:
-```python
-gif.options["dpi"] = 300
-```
-"""
-options = {}
+    Example:
+    ```python
+    gif.options.matplotlib["dpi"] = 300
+    ```
+    """
+
+    def __init__(self):
+        self.matplotlib = {}
+
+    def reset(self):
+        self.matplotlib = {}
+
+
+options = Options()
 
 
 def frame(func):
@@ -32,15 +37,17 @@ def frame(func):
         plt.ylim((0, 100))
     ```
     """
+
     @wraps(func)
     def wrapper(*args, **kwargs):
         buffer = Buffer()
         func(*args, **kwargs)
-        plt.savefig(buffer, format="png", **options)
+        plt.savefig(buffer, format="png", **options.matplotlib)
         plt.close()
         buffer.seek(0)
         img = Image.open(buffer)
         return img
+
     return wrapper
 
 
@@ -63,12 +70,12 @@ def save(frames, path, duration=100):
     ```
     """
     if not path.endswith(".gif"):
-        raise ValueError("Must end with .gif")
+        raise ValueError("Path/filename must end with .gif")
     frames[0].save(
         path,
         save_all=True,
         append_images=frames[1:],
         optimize=True,
         duration=duration,
-        loop=0
+        loop=0,
     )

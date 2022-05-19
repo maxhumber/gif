@@ -1,5 +1,5 @@
 <h3 align="center">
-  <img src="https://raw.githubusercontent.com/maxhumber/gif/master/logo/gif.png" width="250px" alt="gif">
+  <img alt="gif" src="https://raw.githubusercontent.com/maxhumber/gif/master/images/logo.png" width="250px">
 </h3>
 <p align="center">
   <a href="https://github.com/maxhumber/gif"><img alt="GitHub" src="https://img.shields.io/github/license/maxhumber/gif"></a>
@@ -32,7 +32,7 @@ x = [random.randint(0, 100) for _ in range(100)]
 y = [random.randint(0, 100) for _ in range(100)]
 
 # (Optional) Set the dots per inch resolution to 300:
-gif.options["dpi"] = 300
+gif.options.matplotlib["dpi"] = 300
 
 # Decorate a plot function with @gif.frame (return not required):
 @gif.frame
@@ -53,8 +53,16 @@ for i in range(10):
 gif.save(frames, 'example.gif', duration=50)
 ```
 
+
 ### Examples
 
-| [![attachment.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/attachment/attachment.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/attachment) | [![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/hop/hop.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/hop) | [![phone.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/phone/phone.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/phone) |
+| [![arrival.gif](https://raw.githubusercontent.com/maxhumber/gif/master/images/arrival.gif)](https://github.com/maxhumber/gif/blob/master/examples/arrival.py) | [![hop.gif](https://raw.githubusercontent.com/maxhumber/gif/master/images/hop.gif)](https://github.com/maxhumber/gif/blob/master/examples/hop.py) | [![phone.gif](https://raw.githubusercontent.com/maxhumber/gif/master/images/phone.gif)](https://github.com/maxhumber/gif/blob/master/examples/phone.py) |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![seinfeld.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/seinfeld/seinfeld.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/seinfeld) | [![spiral.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/spiral/spiral.gif)](https://github.com/maxhumber/gif/tree/master/gallery/matplotlib/spiral) | [![love.gif](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/love/love.gif)](https://raw.githubusercontent.com/maxhumber/gif/master/gallery/matplotlib/love) |
+| [![seinfeld.gif](https://raw.githubusercontent.com/maxhumber/gif/master/images/seinfeld.gif)](https://github.com/maxhumber/gif/blob/master/examples/seinfeld.py) | [![spiral.gif](https://raw.githubusercontent.com/maxhumber/gif/master/images/spiral.gif)](https://github.com/maxhumber/gif/blob/master/examples/spiral.py) | [![love.gif](https://raw.githubusercontent.com/maxhumber/gif/master/images/love.gif)](https://github.com/maxhumber/gif/blob/master/examples/love.py) |
+
+
+### ⚠️ Warning
+
+Altair and Plotly are no longer supported in `4.0`+
+
+Please use `pip install gif==3.0.0` if you still need to interface with these libraries
