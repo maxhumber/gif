@@ -1,9 +1,7 @@
 import gif
-
 from matplotlib import pyplot as plt
 from PIL import Image
 from PIL.PngImagePlugin import PngImageFile
-
 import pytest
 
 
@@ -33,9 +31,9 @@ def default_file(tmpdir_factory):
 
 @pytest.fixture(scope="session")
 def hd_file(tmpdir_factory):
-    gif.options.matplotlib["dpi"] = 300
+    gif.options["dpi"] = 300
     frames = [plot([0, 5], [0, 5]), plot([0, 10], [0, 10])]
-    del gif.options.matplotlib["dpi"]
+    del gif.options["dpi"]
     path = str(tmpdir_factory.mktemp("matplotlib").join("hd.gif"))
     gif.save(frames, path)
     return path

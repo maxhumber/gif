@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="gif",
-    version="4.0",
+    version="4.0-rc1",
     description="The matplotlib Animation Extension",
     long_description=long_description,
     long_description_content_type="text/markdown",

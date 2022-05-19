@@ -14,7 +14,7 @@ Arguments:
 
 Example:
 ```python
-gif.options.matplotlib["dpi"] = 300
+gif.options["dpi"] = 300
 ```
 """
 options = {}
@@ -44,33 +44,13 @@ def frame(func):
     return wrapper
 
 
-def _time(frames, duration, unit, between):
-    if unit in ["ms", "milliseconds"]:
-        pass
-    elif unit in ["s", "seconds"]:
-        duration *= 1000
-    else:
-        raise ValueError(unit)
-
-    if between == "frames":
-        pass
-    elif between == "startend":
-        duration /= len(frames)
-    else:
-        raise ValueError(between)
-
-    return duration
-
-
-def save(frames, path, duration=100, unit="milliseconds", between="frames", loop=True):
+def save(frames, path, duration=100):
     """Save a collection of frames to a gif
 
+    Arguments:
     - frames (list): Collection of frames built with the @gif.frame decorator
     - path (str): Filename with relative/absolute path (must end with .gif)
-    - duration (float): Time with unit between frames or startend
-    - unit {"ms", "milliseconds", "s", "seconds"}: Time unit value
-    - between {"frames", "startend"}: Duration between "frames" or the entire gif ("startend")
-    - loop (bool): Infinitely loop animation
+    - duration (float): Milliseconds between frames
 
     Example:
     ```python
@@ -79,22 +59,16 @@ def save(frames, path, duration=100, unit="milliseconds", between="frames", loop
         frame = plot(i)
         frames.append(frame)
 
-    gif.save(frames, "test.gif", duration=3, unit="seconds", between="startend")
+    gif.save(frames, "test.gif", duration=50)
     ```
     """
     if not path.endswith(".gif"):
         raise ValueError("Must end with .gif")
-
-    kwargs = {}
-
-    if loop:
-        kwargs["loop"] = 0
-
     frames[0].save(
         path,
         save_all=True,
         append_images=frames[1:],
         optimize=True,
-        duration=_time(frames, duration, unit, between),
-        **kwargs
+        duration=duration,
+        loop=0
     )

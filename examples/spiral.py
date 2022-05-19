@@ -30,4 +30,4 @@ for i in range(N):
     frame = plot_spiral(i)
     frames.append(frame)
 
-gif.save(frames, "gallery/images/matplotlib-spiral.gif", duration=50)
+gif.save(frames, "images/matplotlib-spiral.gif", duration=50)

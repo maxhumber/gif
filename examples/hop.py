@@ -24,4 +24,4 @@ for i in range(N):
     frame = plot_hop(i)
     frames.append(frame)
 
-gif.save(frames, "gallery/images/matplotlib-hop.gif", duration=200)
+gif.save(frames, "images/matplotlib-hop.gif", duration=200)

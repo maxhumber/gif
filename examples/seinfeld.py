@@ -82,4 +82,4 @@ for episode in df.episode.unique():
     frame = plot(episode)
     frames.append(frame)
 
-gif.save(frames, "gallery/images/matplotlib-seinfeld.gif", duration=100)
+gif.save(frames, "images/matplotlib-seinfeld.gif", duration=100)

@@ -38,4 +38,4 @@ for _ in range(100):
     frames.append(frame)
     count_last = count.copy()
 
-gif.save(frames, "gallery/images/matplotlib-arrival.gif")
+gif.save(frames, "images/matplotlib-arrival.gif")

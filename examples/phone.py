@@ -35,4 +35,4 @@ for date in df["date"]:
     frame = plot(date)
     frames.append(frame)
 
-gif.save(frames, "gallery/images/matplotlib-phone.gif", duration=35)
+gif.save(frames, "images/matplotlib-phone.gif", duration=35)

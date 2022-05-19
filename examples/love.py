@@ -22,4 +22,4 @@ for i in range(1, len(x)):
     of = plot_love(x[:i], y[:i])
     frames.append(of)
 
-gif.save(frames, "gallery/images/matplotlib-love.gif", duration=80)
+gif.save(frames, "images/matplotlib-love.gif", duration=80)
