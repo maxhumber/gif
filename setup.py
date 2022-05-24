@@ -5,10 +5,14 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name="gif",
-    version="4.0-rc1",
+    version="22.5.0",
     description="The matplotlib Animation Extension",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    url="https://github.com/maxhumber/gif",
+    author="Max Humber",
+    author_email="max.humber@gmail.com",
+    license="MIT",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Topic :: Multimedia :: Graphics",
@@ -21,11 +25,9 @@ setup(
         "pillow",
         "matplotlib",
     ],
-    url="https://github.com/maxhumber/gif",
-    author="Max Humber",
-    author_email="max.humber@gmail.com",
-    license="MIT",
     py_modules=["gif"],
+    python_requires=">=3.9",
+    setup_requires=["setuptools>=62.1.0"],
     install_requires=["matplotlib>=3.5.2", "Pillow>=9.1.0"],
     extras_require={
         "test": [
@@ -35,7 +37,5 @@ setup(
             "pip>=22.1",
             "pytest>=7.1.2",
         ],
-    },
-    python_requires=">=3.9",
-    setup_requires=["setuptools>=62.1.0"],
+    }
 )

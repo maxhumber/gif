@@ -4,6 +4,7 @@ playground.py
 test.gif
 test-*.gif
 geckodriver.log
+example.gif
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
