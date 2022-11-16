@@ -1,15 +1,23 @@
 from functools import wraps
 from io import BytesIO as Buffer
+from typing import Callable, List, TypeVar
+
 from matplotlib import pyplot as plt
-from PIL import Image
+from PIL import Image as PI
+
+
+Plot = TypeVar("Plot")
+Frame = PI.Image
+Milliseconds = float
 
 
 class Options:
-    """Matplotlib image and export options
+    """Matplotlib export options
 
-    https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html
+    See: ["savefig"](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.savefig.html)
 
     Example:
+
     ```python
     gif.options.matplotlib["dpi"] = 300
     ```
@@ -18,17 +26,18 @@ class Options:
     def __init__(self):
         self.matplotlib = {}
 
-    def reset(self):
+    def reset(self) -> None:
         self.matplotlib = {}
 
 
 options = Options()
 
 
-def frame(func):
-    """Plot function decorator
+def frame(plot: Callable[..., Plot]) -> Callable[..., Frame]:  # type: ignore[valid-type]
+    """Prepare plot for animation
 
     Example:
+
     ```python
     @gif.frame
     def plot(i):
@@ -38,57 +47,45 @@ def frame(func):
     ```
     """
 
-    @wraps(func)
-    def wrapper(*args, **kwargs):
+    @wraps(plot)
+    def inner(*args, **kwargs) -> Frame:  # type: ignore[valid-type]
         buffer = Buffer()
-        func(*args, **kwargs)
+        plot(*args, **kwargs)
         plt.savefig(buffer, format="png", **options.matplotlib)
         plt.close()
         buffer.seek(0)
-        img = Image.open(buffer)
-        return img
+        frame = PI.open(buffer)
+        return frame  # type: ignore[no-any-return]
 
-    return wrapper
+    return inner
 
 
-def save(frames, path, duration=100, keep_all: bool= True):
-    """Save a collection of frames to a gif
+def save(
+    frames: List[Frame],  # type: ignore[valid-type]
+    path: str,
+    duration: Milliseconds = 100,
+    *,
+    overlapping: bool = True,
+) -> None:
+    """Save prepared frames to .gif file
 
-    Arguments:
-    - frames (list): Collection of frames built with the @gif.frame decorator
-    - path (str): Filename with relative/absolute path (must end with .gif)
-    - duration (float): Milliseconds between frames
-    - keep_all (bool): if true, all images are displayed, otherwise, only each frame
     Example:
-    ```python
-    frames = []
-    for i in range(10):
-        frame = plot(i)
-        frames.append(frame)
 
+    ```python
+    frames = [plot(i) for i in range(10)]
     gif.save(frames, "test.gif", duration=50)
     ```
     """
 
-    if keep_all:
-
-        disposal = 0
-
-    else:
-
-        disposal = 2
-
-
-
-    
     if not path.endswith(".gif"):
-        raise ValueError("Path/filename must end with .gif")
-    frames[0].save(
+        raise ValueError("must end with .gif")
+
+    frames[0].save(  # type: ignore
         path,
         save_all=True,
         append_images=frames[1:],
         optimize=True,
         duration=duration,
-        disposal=disposal,
+        disposal=0 if overlapping else 2,
         loop=0,
     )

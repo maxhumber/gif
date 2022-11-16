@@ -1,9 +1,10 @@
-import gif
-
 import random
 from collections import Counter
+
 from matplotlib import pyplot as plt
 from PIL import Image
+
+import gif
 
 random.seed(2020)
 
@@ -38,4 +39,4 @@ for _ in range(100):
     frames.append(frame)
     count_last = count.copy()
 
-gif.save(frames, "images/matplotlib-arrival.gif")
+gif.save(frames, "images/arrival.gif")

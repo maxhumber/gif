@@ -1,8 +1,7 @@
-import gif
-
-from matplotlib import pyplot as plt
 import pandas as pd
+from matplotlib import pyplot as plt
 
+import gif
 
 START = pd.Timestamp("2019-04-20")
 END = pd.Timestamp("2020-05-01")
@@ -35,4 +34,4 @@ for date in df["date"]:
     frame = plot(date)
     frames.append(frame)
 
-gif.save(frames, "images/matplotlib-phone.gif", duration=35)
+gif.save(frames, "images/phone.gif", duration=35)

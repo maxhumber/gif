@@ -1,7 +1,7 @@
-import gif
-
 import matplotlib.pyplot as plt
 import numpy as np
+
+import gif
 
 N = 50
 red = np.random.normal(loc=45, scale=3, size=N)
@@ -24,4 +24,4 @@ for i in range(N):
     frame = plot_hop(i)
     frames.append(frame)
 
-gif.save(frames, "images/matplotlib-hop.gif", duration=200)
+gif.save(frames, "images/hop.gif", duration=200)

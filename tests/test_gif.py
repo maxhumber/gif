@@ -1,8 +1,9 @@
-import gif
+import pytest
 from matplotlib import pyplot as plt
 from PIL import Image
 from PIL.PngImagePlugin import PngImageFile
-import pytest
+
+import gif
 
 
 def milliseconds(img):

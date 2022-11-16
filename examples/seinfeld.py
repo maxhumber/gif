@@ -1,9 +1,9 @@
-import gif
-
 import re
-from matplotlib import pyplot as plt
-import pandas as pd
 
+import pandas as pd
+from matplotlib import pyplot as plt
+
+import gif
 
 # script cleaning
 df = pd.read_csv("gallery/data/seinfeld.csv")
@@ -82,4 +82,4 @@ for episode in df.episode.unique():
     frame = plot(episode)
     frames.append(frame)
 
-gif.save(frames, "images/matplotlib-seinfeld.gif", duration=100)
+gif.save(frames, "images/seinfeld.gif", duration=100)

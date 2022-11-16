@@ -1,8 +1,8 @@
-import gif
-
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+
+import gif
 
 N = 100
 
@@ -30,4 +30,4 @@ for i in range(N):
     frame = plot_spiral(i)
     frames.append(frame)
 
-gif.save(frames, "images/matplotlib-spiral.gif", duration=50)
+gif.save(frames, "images/spiral.gif", duration=50)

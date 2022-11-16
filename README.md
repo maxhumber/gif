@@ -11,29 +11,30 @@
 
 The [matplotlib](https://matplotlib.org/) Animation Extension
 
-
-### Quickstart
-
-Install
+### Install & Import
 
 ```sh
 pip install gif
 ```
 
-Usage
+```python
+import gif
+```
+
+### Quickstart
 
 ```python
-import random
-from matplotlib import pyplot as plt
 import gif
+from random import randint
+from matplotlib import pyplot as plt
 
-x = [random.randint(0, 100) for _ in range(100)]
-y = [random.randint(0, 100) for _ in range(100)]
+x = [randint(0, 100) for _ in range(100)]
+y = [randint(0, 100) for _ in range(100)]
 
-# (Optional) Set the dots per inch resolution to 300:
+# (Optional) Set the dots per inch resolution to 300
 gif.options.matplotlib["dpi"] = 300
 
-# Decorate a plot function with @gif.frame (return not required):
+# Decorate a plot function with @gif.frame
 @gif.frame
 def plot(i):
     xi = x[i*10:(i+1)*10]
@@ -42,22 +43,19 @@ def plot(i):
     plt.xlim((0, 100))
     plt.ylim((0, 100))
 
-# Build a bunch of "frames"
-frames = []
-for i in range(10):
-    frame = plot(i)
-    frames.append(frame)
+# Construct "frames"
+frames = [plot(i) for i in range(10)]
 
-# Specify the duration between frames (milliseconds) and save to file:
+# Save "frames" to gif with a specified duration (milliseconds) between each frame
 gif.save(frames, 'example.gif', duration=50)
 ```
 
 
 ### Examples
 
-| [![arrival.gif](images/arrival.gif)](examples/arrival.py) | [![hop.gif](images/hop.gif)](examples/hop.py) | [![phone.gif](images/phone.gif)](examples/phone.py) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [![seinfeld.gif](images/seinfeld.gif)](examples/seinfeld.py) | [![spiral.gif](images/spiral.gif)](examples/spiral.py) | [![love.gif](images/love.gif)](love.py) |
+| [![arrival.gif](images/arrival.gif)](examples/arrival.py)    | [![hop.gif](images/hop.gif)](examples/hop.py)          | [![phone.gif](images/phone.gif)](examples/phone.py) |
+| ------------------------------------------------------------ | ------------------------------------------------------ | --------------------------------------------------- |
+| [![seinfeld.gif](images/seinfeld.gif)](examples/seinfeld.py) | [![spiral.gif](images/spiral.gif)](examples/spiral.py) | [![heart.gif](images/heart.gif)](heart.py)          |
 
 
 ### Warning
