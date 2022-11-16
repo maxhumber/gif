@@ -51,14 +51,14 @@ def frame(func):
     return wrapper
 
 
-def save(frames, path, duration=100):
+def save(frames, path, duration=100, keep_all: bool= True):
     """Save a collection of frames to a gif
 
     Arguments:
     - frames (list): Collection of frames built with the @gif.frame decorator
     - path (str): Filename with relative/absolute path (must end with .gif)
     - duration (float): Milliseconds between frames
-
+    - keep_all (bool): if true, all images are displayed, otherwise, only each frame
     Example:
     ```python
     frames = []
@@ -69,6 +69,18 @@ def save(frames, path, duration=100):
     gif.save(frames, "test.gif", duration=50)
     ```
     """
+
+    if keep_all:
+
+        disposal = 0
+
+    else:
+
+        disposal = 2
+
+
+
+    
     if not path.endswith(".gif"):
         raise ValueError("Path/filename must end with .gif")
     frames[0].save(
@@ -77,5 +89,6 @@ def save(frames, path, duration=100):
         append_images=frames[1:],
         optimize=True,
         duration=duration,
+        disposal=disposal,
         loop=0,
     )
