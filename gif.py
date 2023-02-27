@@ -60,12 +60,31 @@ def frame(plot: Callable[..., Plot]) -> Callable[..., Frame]:  # type: ignore[va
     return inner
 
 
+def _optimize_frames(frames: List[Frame]):
+    import numpy as np
+    joined_img = PI.fromarray(np.vstack(frames))
+    joined_img = joined_img.quantize(colors=256 - 1, dither=0)
+    palette = b'\xff\x00\xff' + joined_img.palette.getdata()[1]
+    joined_img_arr = np.array(joined_img)
+    joined_img_arr += 1
+    arrays = np.vsplit(joined_img_arr, len(frames))
+
+    prev_array = arrays[0]
+    for array in arrays[1:]:
+        mask = array == prev_array
+        prev_array = array.copy()
+        array[mask] = 0
+    frames_out = [PI.fromarray(array) for array in arrays]
+    return frames_out, palette
+
+
 def save(
     frames: List[Frame],  # type: ignore[valid-type]
     path: str,
     duration: Milliseconds = 100,
     *,
     overlapping: bool = True,
+    optimize: bool = False,
 ) -> None:
     """Save prepared frames to .gif file
 
@@ -80,6 +99,14 @@ def save(
     if not path.endswith(".gif"):
         raise ValueError(f"'{path}' must end with .gif")
 
+    kwargs = {}
+    if optimize:
+        frames, palette = _optimize_frames(frames)
+        kwargs = {
+            "palette": palette,
+            "transparency": 0,
+        }
+
     frames[0].save(  # type: ignore
         path,
         save_all=True,
@@ -88,4 +115,5 @@ def save(
         duration=duration,
         disposal=0 if overlapping else 2,
         loop=0,
+        **kwargs
     )
