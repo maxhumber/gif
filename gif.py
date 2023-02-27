@@ -78,7 +78,7 @@ def save(
     """
 
     if not path.endswith(".gif"):
-        raise ValueError("must end with .gif")
+        raise ValueError(f"'{path}' must end with .gif")
 
     frames[0].save(  # type: ignore
         path,
