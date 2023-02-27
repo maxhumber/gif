@@ -10,7 +10,7 @@ N = 100
 @gif.frame
 def plot_spiral(i):
     fig = plt.figure(figsize=(5, 3), dpi=100)
-    ax = fig.gca(projection="3d")
+    ax = fig.add_subplot(projection="3d")
     a, b = 0.5, 0.2
     th = np.linspace(475, 500, N)
     x = a * np.exp(b * th) * np.cos(th)
