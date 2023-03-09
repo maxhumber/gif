@@ -1,5 +1,5 @@
 test: 
-	pytest
+	pytest tests
 
 format:
 	isort .

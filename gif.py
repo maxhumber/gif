@@ -1,10 +1,12 @@
 from functools import wraps
 from io import BytesIO as Buffer
-from typing import Callable, List, TypeVar
+from typing import Callable, List, TypeVar, ByteString
 
 from matplotlib import pyplot as plt
+from numpy import array as numpy_array
+from numpy import vsplit as numpy_vsplit
+from numpy import vstack as numpy_vstack
 from PIL import Image as PI
-
 
 Plot = TypeVar("Plot")
 Frame = PI.Image
@@ -60,18 +62,16 @@ def frame(plot: Callable[..., Plot]) -> Callable[..., Frame]:  # type: ignore[va
     return inner
 
 
-def _optimize_frames(frames: List[Frame]):
-    import numpy as np
-    joined_img = PI.fromarray(np.vstack(frames))
-    joined_img = joined_img.quantize(colors=256 - 1, dither=0)
-    palette = b'\xff\x00\xff' + joined_img.palette.getdata()[1]
-    joined_img_arr = np.array(joined_img)
+def _optimize_frames(frames: List[Frame]) -> (List[PI.Image], ByteString):  # type: ignore[valid-type]
+    joined_img = PI.fromarray(numpy_vstack(frames))
+    joined_img = joined_img.quantize(colors=255, dither=0)
+    palette = b"\xff\x00\xff" + joined_img.palette.getdata()[1]
+    joined_img_arr = numpy_array(joined_img)
     joined_img_arr += 1
-    arrays = np.vsplit(joined_img_arr, len(frames))
-
+    arrays = numpy_vsplit(joined_img_arr, len(frames))
     prev_array = arrays[0]
     for array in arrays[1:]:
-        mask = array == prev_array
+        mask = (array == prev_array)
         prev_array = array.copy()
         array[mask] = 0
     frames_out = [PI.fromarray(array) for array in arrays]
@@ -102,10 +102,7 @@ def save(
     kwargs = {}
     if optimize:
         frames, palette = _optimize_frames(frames)
-        kwargs = {
-            "palette": palette,
-            "transparency": 0,
-        }
+        kwargs = {"palette": palette, "transparency": 0}
 
     frames[0].save(  # type: ignore
         path,
@@ -115,5 +112,5 @@ def save(
         duration=duration,
         disposal=0 if overlapping else 2,
         loop=0,
-        **kwargs
+        **kwargs,
     )
