@@ -108,7 +108,7 @@ def save(
         path,
         save_all=True,
         append_images=frames[1:],
-        optimize=True,
+        optimize=optimize,
         duration=duration,
         disposal=0 if overlapping else 2,
         loop=0,
